@@ -1,0 +1,304 @@
+{
+  "dataset_version": "v4.1-consistency-fixes",
+  "split": "test",
+  "instructions": "Annotations de reference verifiees. La taxonomie distingue les changements de compatibilite, les risques de securite documentes et les simples suspicions.",
+  "records": [
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31212v1",
+      "source": "arxiv",
+      "title": "Flood forecasting using a physics-guided conditional denoising diffusion probabilistic model",
+      "relevance_score": 15,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Abstract: DDPM conditionnel pour crues (equations SWE, bassin Des Plaines); application geophysique Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31227v1",
+      "source": "arxiv",
+      "title": "How Far Can Linear Go? BiPert, a Unified Framework for Single-Cell Perturbation Modelling",
+      "relevance_score": 10,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Abstract: perturbations genetiques single-cell (CRISPR); biologie computationnelle Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31237v1",
+      "source": "arxiv",
+      "title": "Let Vision-Language Models Generate Images through Their Representations",
+      "relevance_score": 50,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Abstract: modeles unifies comprehension+generation visuelle a partir de VLM pre-entraines; pertinence multimodale Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31240v1",
+      "source": "arxiv",
+      "title": "Pruning Autonomous Driving VLAs: What to Preserve for Reasoning and Action",
+      "relevance_score": 35,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Abstract: elagage structure de VLA de conduite (Alpamayo-1.5-10B, CoT); l'elagage est transferable mais domaine conduite Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "github:1469445489",
+      "source": "github",
+      "title": "LeonidaReforge/Leonida",
+      "relevance_score": 10,
+      "risk_level": "MEDIUM",
+      "breaking_changes": false,
+      "evidence": "Description: 'continuation communautaire du projet Leonida' (probable jeu); stars=326, Python, 0 topic; profil different du reseau spam mais contenu non verifiable Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "SUSPICION"
+    },
+    {
+      "signal_id": "github:1469545146",
+      "source": "github",
+      "title": "injectingon5m-alt/pubg-map-hack",
+      "relevance_score": 5,
+      "risk_level": "MEDIUM",
+      "breaking_changes": false,
+      "evidence": "Description 'map intel / HUD overlays' mais nom 'pubg-map-hack'; stars=178, language=HTML, aucun topic; leurre de hack de jeu probable Taxonomy: Suspicion indicators are present, but no direct exploit is documented.",
+      "annotation_status": "verified",
+      "risk_category": "SUSPICION"
+    },
+    {
+      "signal_id": "github:1469792866",
+      "source": "github",
+      "title": "carllouisepamittan/sketchup-pro-befalor",
+      "relevance_score": 5,
+      "risk_level": "MEDIUM",
+      "breaking_changes": false,
+      "evidence": "Description generique ('focused modeling tools') mais topics 'how-to-install-sketchup'/'blender-3d-download', stars=177, language=HTML, suffixe aleatoire 'befalor'; motif de logiciel crack Taxonomy: Suspicion indicators are present, but no direct exploit is documented.",
+      "annotation_status": "verified",
+      "risk_category": "SUSPICION"
+    },
+    {
+      "signal_id": "github:1469810970",
+      "source": "github",
+      "title": "HavocSaif/avast-premium-security-kacerin",
+      "relevance_score": 5,
+      "risk_level": "MEDIUM",
+      "breaking_changes": false,
+      "evidence": "Description vide de sens ('Directory listing'); topics antivirus generiques, suffixe 'kacerin', stars=177, language=HTML; motif de faux antivirus/crack Taxonomy: Suspicion indicators are present, but no direct exploit is documented.",
+      "annotation_status": "verified",
+      "risk_category": "SUSPICION"
+    },
+    {
+      "signal_id": "github_releases:langchain-ai/langchain:455665338",
+      "source": "github_releases",
+      "title": "langchain-ai/langchain langchain-text-splitters==1.2.0",
+      "relevance_score": 40,
+      "risk_level": "MEDIUM",
+      "breaking_changes": true,
+      "evidence": "langchain-text-splitters 1.2.0: 'Remove EOL'd Python 3.10 from text_splitters...'; reste = bumps de dependances et correctifs de securite de dev; non qualifie BREAKING Taxonomy: Explicit compatibility or support change.",
+      "annotation_status": "verified",
+      "risk_category": "COMPATIBILITY"
+    },
+    {
+      "signal_id": "github_releases:langchain-ai/langchain:455668448",
+      "source": "github_releases",
+      "title": "langchain-ai/langchain langchain-tests==1.2.0",
+      "relevance_score": 30,
+      "risk_level": "MEDIUM",
+      "breaking_changes": true,
+      "evidence": "langchain-tests 1.2.0 (utilitaires de tests): 'Remove EOL'd Python 3.10 from text_splitters, model_profiles and standard-tests'; non qualifie BREAKING; paquet surtout interne; texte tronque Taxonomy: Explicit compatibility or support change.",
+      "annotation_status": "verified",
+      "risk_category": "COMPATIBILITY"
+    },
+    {
+      "signal_id": "github_releases:openai/openai-python:450225202",
+      "source": "github_releases",
+      "title": "openai/openai-python v3.55.1",
+      "relevance_score": 25,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "openai-python 3.55.1: chores (bumps de deps, doc de champs de moderation); peu actionnable Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "github_releases:openai/openai-python:451919602",
+      "source": "github_releases",
+      "title": "openai/openai-python v3.56.0",
+      "relevance_score": 55,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "openai-python 3.56.0: ajoute gpt-live-1.1 aux modeles Live; aucune rupture indiquee Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "hackernews:42063346",
+      "source": "hackernews",
+      "title": "Show HN: Aide, an open-source AI native IDE",
+      "relevance_score": 60,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Open source, fork VSCode avec LLM (points=253, 169 commentaires); pertinent; post ~nov 2024 donc nouveaute reduite Taxonomy: Security concern documented in the evidence.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "hackernews:45029254",
+      "source": "hackernews",
+      "title": "Show HN: Pantheon-CLI Ã¢â‚¬â€œ Open-Source Python Claude Code and Smart Notebook",
+      "relevance_score": 60,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Open source, 'Python Claude Code + notebook' pour analyse de donnees, execution locale; pertinent mais faible traction (points=6) Taxonomy: Security concern documented in the evidence.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "hackernews:46031208",
+      "source": "hackernews",
+      "title": "Syd Ã¢â‚¬â€œ An offline-first, AI-augmented workstation for blue teams",
+      "relevance_score": 55,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Poste forensique hors ligne orchestrant YARA/Nmap avec LLM local; securite + LLM local; traction moyenne (points=21) Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "hackernews:48125186",
+      "source": "hackernews",
+      "title": "Show HN: Truly Typed Ã¢â‚¬â€œ A writing app for the AI era",
+      "relevance_score": 30,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Application d'ecriture tracant l'historique de creation d'un document (points=8); produit grand public, angle IA marginal Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "huggingface:MiniMaxAI/MiniMax-H3",
+      "source": "huggingface",
+      "title": "HF Model: MiniMaxAI/MiniMax-H3",
+      "relevance_score": 65,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Modele video; 5.9M telechargements, 7.3k likes; licence non indiquee; capacites non verifiees par moi Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "huggingface:black-forest-labs/FLUX.1-dev",
+      "source": "huggingface",
+      "title": "HF Model: black-forest-labs/FLUX.1-dev",
+      "relevance_score": 45,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Image; 389k telechargements, 16.3k likes; licence 'other' (non commerciale, risque de licence non note); modele etabli Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "huggingface:hexgrad/Kokoro-82M",
+      "source": "huggingface",
+      "title": "HF Model: hexgrad/Kokoro-82M",
+      "relevance_score": 60,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "TTS 82M; 13.6M telechargements, 7.5k likes, apache-2.0; tres utilise en local Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "huggingface:stabilityai/stable-diffusion-xl-base-1.0",
+      "source": "huggingface",
+      "title": "HF Model: stabilityai/stable-diffusion-xl-base-1.0",
+      "relevance_score": 40,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "4.8M telechargements, 8.5k likes, openrail++; modele 2023 etabli Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/210a0843c601",
+      "source": "medium",
+      "title": "RAG vs. Fine-Tuning: The Wrong Question Enterprises Are Asking",
+      "relevance_score": 45,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "RAG vs fine-tuning, angle conceptuel entreprise; pertinent mais generique Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/8582041951d7",
+      "source": "medium",
+      "title": "Change One Thing at a Time When an AI Result Goes Wrong",
+      "relevance_score": 35,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Conseil de debogage de resultats IA (changer une chose a la fois); utile mais generique Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/a9db7d85f765",
+      "source": "medium",
+      "title": "I Used to Catch AI-Written Text. Now I Catch AI Getting It Wrong.",
+      "relevance_score": 35,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Reflexion d'un chercheur sur la detection de texte IA; peripherique Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/ab8f73ba9a9a",
+      "source": "medium",
+      "title": "Beyond Manual Redaction: How Automated Aadhaar Masking Strengthens Business Document Security",
+      "relevance_score": 25,
+      "risk_level": "LOW",
+      "breaking_changes": false,
+      "evidence": "Masquage automatise d'Aadhaar dans des documents; article marketing d'un editeur (auteur = societe); peu technique Taxonomy: No explicit elevated risk evidence in the frozen signal.",
+      "annotation_status": "verified",
+      "risk_category": "NONE"
+    }
+  ],
+  "derived_from": {
+    "file": "test_gold_annotated_v4.json",
+    "sha256": "240435dae96059d7779a1a1c8324d7f8333c79df11f3271afc38bf649d67775c"
+  },
+  "corrections": [
+    {
+      "signal_id": "github:1469445489",
+      "title": "LeonidaReforge/Leonida",
+      "field": "risk_category",
+      "old": "NONE",
+      "new": "SUSPICION",
+      "risk_level_kept": "MEDIUM",
+      "reason": "ELEVATED_NONE: MEDIUM justified by an unclear, game-like repository profile (indicator, no proof)"
+    },
+    {
+      "signal_id": "hackernews:42063346",
+      "title": "Show HN: Aide, an open-source AI native IDE",
+      "field": "risk_category",
+      "old": "SECURITY",
+      "new": "NONE",
+      "risk_level_kept": "LOW",
+      "reason": "LOW_SECURITY: evidence describes an AI IDE, no security issue"
+    },
+    {
+      "signal_id": "hackernews:45029254",
+      "title": "Show HN: Pantheon-CLI Ã¢â‚¬â€œ Open-Source Python Claude Code and Smart Notebook",
+      "field": "risk_category",
+      "old": "SECURITY",
+      "new": "NONE",
+      "risk_level_kept": "LOW",
+      "reason": "LOW_SECURITY: evidence describes a Python CLI, no security issue"
+    }
+  ]
+}

@@ -1,0 +1,1052 @@
+{
+  "benchmark_version": "v1.1",
+  "run_index": 1,
+  "generated_at": "2026-11-25T11:43:31.401085+00:00",
+  "split": "test",
+  "dataset": {
+    "signals_file": "data\\release_enhanced\\signals_frozen.json",
+    "gold_file": "data\\release_enhanced\\test_gold_annotated_v4_1.json",
+    "signals_sha256": "6bb6e0b882b017a6bf0e1b3ee8f09f8a3ef884dd1a25584193d019758cf10d94",
+    "gold_sha256": "2eac6f07697b7e5efd4fc84d73e5bc5f8e059b5d0287f2141720e258185055f1",
+    "signal_count": 24
+  },
+  "models": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "base_url": "https://api.groq.com/openai/v1"
+  },
+  "execution": {
+    "duration_ms": 232726.3,
+    "concurrency": 6,
+    "api_calls_requested": 48,
+    "relevance_fallbacks": 0,
+    "risk_fallbacks": 0
+  },
+  "metrics": {
+    "relevance": {
+      "support": 24,
+      "invalid_predictions": 0,
+      "spearman": 0.5647427718084733,
+      "ndcg_at_10": 0.7184292232555661,
+      "ndcg_at_10_definition": "graded_gain_2_power_normalized_score_0_1",
+      "ndcg_at_10_legacy": 0.02488910385684018,
+      "top_10_overlap": 0.6,
+      "mean_absolute_error": 20.333333333333332
+    },
+    "risk": {
+      "support": 24,
+      "invalid_predictions": 0,
+      "breaking_changes": {
+        "support": 24,
+        "positive_support": 2,
+        "true_positives": 2,
+        "true_negatives": 22,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positive_rate": 0.0
+      },
+      "risk_level": {
+        "support": 24,
+        "accuracy": 0.8333333333333334,
+        "macro_f1_observed_classes": 0.7,
+        "macro_f1_all_declared_classes": 0.35,
+        "classes_without_support": [
+          "HIGH",
+          "CRITICAL"
+        ],
+        "per_class": {
+          "LOW": {
+            "support": 18,
+            "precision": 0.8181818181818182,
+            "recall": 1.0,
+            "f1": 0.9
+          },
+          "MEDIUM": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "f1": 0.5
+          },
+          "HIGH": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "CRITICAL": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "confusion_matrix": {
+          "LOW": {
+            "LOW": 18,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "MEDIUM": {
+            "LOW": 4,
+            "MEDIUM": 2,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "HIGH": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "CRITICAL": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          }
+        }
+      },
+      "risk_category": {
+        "support": 24,
+        "accuracy": 0.8333333333333334
+      }
+    }
+  },
+  "diagnostics": {
+    "available": false
+  },
+  "records": [
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31212v1",
+      "source": "arxiv",
+      "title": "Flood forecasting using a physics-guided conditional denoising diffusion probabilistic model",
+      "gold": {
+        "relevance_score": 15,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 79,
+        "relevance_reasoning": "The work introduces a recent physics‑guided diffusion model for flood forecasting, directly relevant to ML engineers, with practical but domain‑specific use and timely climate relevance.",
+        "relevance_rubric": {
+          "novelty": 20,
+          "technical_relevance": 25,
+          "applicability": 18,
+          "timeliness": 16
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 1289.02,
+        "risk": 555.91
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31227v1",
+      "source": "arxiv",
+      "title": "How Far Can Linear Go? BiPert, a Unified Framework for Single-Cell Perturbation Modelling",
+      "gold": {
+        "relevance_score": 10,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 80,
+        "relevance_reasoning": "Introduces a new linear framework for predicting perturbation responses in single‑cell data, directly relevant to ML models for genomics, practically useful for developers building such tools, and is a recent arXiv contribution.",
+        "relevance_rubric": {
+          "novelty": 18,
+          "technical_relevance": 27,
+          "applicability": 20,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 21000.5,
+        "risk": 696.08
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31237v1",
+      "source": "arxiv",
+      "title": "Let Vision-Language Models Generate Images through Their Representations",
+      "gold": {
+        "relevance_score": 50,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 81,
+        "relevance_reasoning": "The paper introduces a new method for using vision‑language model representations to drive image generation, directly relevant to multimodal AI development, moderately actionable for research implementations, and timely as unified models are a current focus.",
+        "relevance_rubric": {
+          "novelty": 20,
+          "technical_relevance": 28,
+          "applicability": 18,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 32185.65,
+        "risk": 596.64
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31240v1",
+      "source": "arxiv",
+      "title": "Pruning Autonomous Driving VLAs: What to Preserve for Reasoning and Action",
+      "gold": {
+        "relevance_score": 35,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "Introduces a new pruning analysis for vision‑language‑action models in autonomous driving, directly relevant to AI/ML engineering, with actionable insights but still early-stage and of moderate immediate urgency.",
+        "relevance_rubric": {
+          "novelty": 20,
+          "technical_relevance": 28,
+          "applicability": 18,
+          "timeliness": 12
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [
+          "No evidence of a backward‑incompatible change or security issue in the reported research."
+        ],
+        "evidence": [
+          "The signal discusses pruning strategies for autonomous driving VLA models, not a software release or API modification."
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 41094.51,
+        "risk": 1731.69
+      }
+    },
+    {
+      "signal_id": "github:1469445489",
+      "source": "github",
+      "title": "LeonidaReforge/Leonida",
+      "gold": {
+        "relevance_score": 10,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 20,
+        "relevance_reasoning": "The brief description provides no concrete evidence of novel AI/ML content, direct relevance, practical use, or urgency.",
+        "relevance_rubric": {
+          "novelty": 5,
+          "technical_relevance": 5,
+          "applicability": 5,
+          "timeliness": 5
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [
+          "No risk detected from the provided signal content."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 51243.72,
+        "risk": 1843.87
+      }
+    },
+    {
+      "signal_id": "github:1469545146",
+      "source": "github",
+      "title": "injectingon5m-alt/pubg-map-hack",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 15,
+        "relevance_reasoning": "The repo provides a game HUD overlay, which lacks AI/ML engineering relevance and offers minimal novelty or actionable value for developers.",
+        "relevance_rubric": {
+          "novelty": 5,
+          "technical_relevance": 0,
+          "applicability": 5,
+          "timeliness": 5
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [
+          "No evidence of security, compatibility, or breaking changes in the provided signal."
+        ],
+        "evidence": [
+          "Live map intel and HUD overlays that keep PUBG squad decisions sharp."
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 10745.58,
+        "risk": 1170.19
+      }
+    },
+    {
+      "signal_id": "github:1469792866",
+      "source": "github",
+      "title": "carllouisepamittan/sketchup-pro-befalor",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 2,
+        "relevance_reasoning": "The repository describes a SketchUp modeling tool, offering no AI/ML engineering content or relevance.",
+        "relevance_rubric": {
+          "novelty": 2,
+          "technical_relevance": 0,
+          "applicability": 0,
+          "timeliness": 0
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58905.15,
+        "risk": 2360.98
+      }
+    },
+    {
+      "signal_id": "github:1469810970",
+      "source": "github",
+      "title": "HavocSaif/avast-premium-security-kacerin",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 0,
+        "relevance_reasoning": "The signal provides only a generic directory listing of a security project with no evident AI/ML content or relevance.",
+        "relevance_rubric": {
+          "novelty": 0,
+          "technical_relevance": 0,
+          "applicability": 0,
+          "timeliness": 0
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [
+          "No evidence of security or compatibility issues found"
+        ],
+        "evidence": [
+          "Signal contains only a directory listing for the Avast Premium Security Kacerin project"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58681.81,
+        "risk": 2158.62
+      }
+    },
+    {
+      "signal_id": "github_releases:langchain-ai/langchain:455665338",
+      "source": "github_releases",
+      "title": "langchain-ai/langchain langchain-text-splitters==1.2.0",
+      "gold": {
+        "relevance_score": 40,
+        "risk_level": "MEDIUM",
+        "breaking_changes": true,
+        "risk_category": "COMPATIBILITY"
+      },
+      "predictions": {
+        "relevance_score": 42,
+        "relevance_reasoning": "The release mainly provides security patches, dependency updates, and removal of an old Python version, offering modest relevance and usefulness to AI/ML developers now.",
+        "relevance_rubric": {
+          "novelty": 5,
+          "technical_relevance": 15,
+          "applicability": 12,
+          "timeliness": 10
+        },
+        "risk_level": "MEDIUM",
+        "risk_category": "COMPATIBILITY",
+        "concerns": [],
+        "evidence": [
+          "Explicit compatibility marker detected in the frozen signal."
+        ],
+        "breaking_changes": true,
+        "evidence_strength": "CONFIRMED"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59140.24,
+        "risk": 1902.3
+      }
+    },
+    {
+      "signal_id": "github_releases:langchain-ai/langchain:455668448",
+      "source": "github_releases",
+      "title": "langchain-ai/langchain langchain-tests==1.2.0",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "MEDIUM",
+        "breaking_changes": true,
+        "risk_category": "COMPATIBILITY"
+      },
+      "predictions": {
+        "relevance_score": 28,
+        "relevance_reasoning": "The release mainly contains dependency bumps and removal of an old Python version, offering limited new functionality for AI/ML developers.",
+        "relevance_rubric": {
+          "novelty": 5,
+          "technical_relevance": 10,
+          "applicability": 8,
+          "timeliness": 5
+        },
+        "risk_level": "MEDIUM",
+        "risk_category": "COMPATIBILITY",
+        "concerns": [
+          "Removal of support for Python 3.10 may cause incompatibility for users still on that version"
+        ],
+        "evidence": [
+          "feat: Remove EOL'd Python 3.10 from text_splitters, model_profiles and standard-tests (#41343)",
+          "Explicit compatibility marker detected in the frozen signal."
+        ],
+        "breaking_changes": true,
+        "evidence_strength": "CONFIRMED"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58043.48,
+        "risk": 2203.95
+      }
+    },
+    {
+      "signal_id": "github_releases:openai/openai-python:450225202",
+      "source": "github_releases",
+      "title": "openai/openai-python v3.55.1",
+      "gold": {
+        "relevance_score": 25,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 15,
+        "relevance_reasoning": "The release only adds documentation and dependency updates, offering minimal new capability or immediate impact for AI/ML developers.",
+        "relevance_rubric": {
+          "novelty": 2,
+          "technical_relevance": 5,
+          "applicability": 5,
+          "timeliness": 3
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 57784.34,
+        "risk": 2040.2
+      }
+    },
+    {
+      "signal_id": "github_releases:openai/openai-python:451919602",
+      "source": "github_releases",
+      "title": "openai/openai-python v3.56.0",
+      "gold": {
+        "relevance_score": 55,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "Adds a new Live model (gpt-live-1.1) to the OpenAI Python SDK, directly impacting developers building AI/ML applications with immediate utility.",
+        "relevance_rubric": {
+          "novelty": 15,
+          "technical_relevance": 25,
+          "applicability": 20,
+          "timeliness": 18
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 57527.1,
+        "risk": 2073.72
+      }
+    },
+    {
+      "signal_id": "hackernews:42063346",
+      "source": "hackernews",
+      "title": "Show HN: Aide, an open-source AI native IDE",
+      "gold": {
+        "relevance_score": 60,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 80,
+        "relevance_reasoning": "An open‑source VSCode fork embedding LLM agents is a fresh, directly relevant AI/ML tooling that developers can adopt now, offering practical enhancements.",
+        "relevance_rubric": {
+          "novelty": 18,
+          "technical_relevance": 26,
+          "applicability": 20,
+          "timeliness": 16
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 57640.55,
+        "risk": 1929.24
+      }
+    },
+    {
+      "signal_id": "hackernews:45029254",
+      "source": "hackernews",
+      "title": "Show HN: Pantheon-CLI – Open-Source Python Claude Code and Smart Notebook",
+      "gold": {
+        "relevance_score": 60,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "A locally‑run, open‑source Claude‑based CLI for data‑analysis notebooks offers a fresh, directly relevant tool for AI/ML developers, with solid practical value and timely relevance to current privacy‑focused AI trends.",
+        "relevance_rubric": {
+          "novelty": 18,
+          "technical_relevance": 26,
+          "applicability": 20,
+          "timeliness": 14
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [
+          "No explicit technical or security risk identified in the signal."
+        ],
+        "evidence": [
+          "Signal only describes a new open‑source CLI tool; no mention of vulnerabilities, deprecated features, or breaking changes."
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58181.34,
+        "risk": 1844.56
+      }
+    },
+    {
+      "signal_id": "hackernews:46031208",
+      "source": "hackernews",
+      "title": "Syd – An offline-first, AI-augmented workstation for blue teams",
+      "gold": {
+        "relevance_score": 55,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 69,
+        "relevance_reasoning": "The project introduces a novel offline‑first LLM‑augmented forensic workstation, directly ties AI to security tooling, is practically useful for blue‑team workflows, and aligns with current privacy‑focused AI trends.",
+        "relevance_rubric": {
+          "novelty": 18,
+          "technical_relevance": 20,
+          "applicability": 15,
+          "timeliness": 16
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58128.93,
+        "risk": 1828.68
+      }
+    },
+    {
+      "signal_id": "hackernews:48125186",
+      "source": "hackernews",
+      "title": "Show HN: Truly Typed – A writing app for the AI era",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 53,
+        "relevance_reasoning": "The app introduces a new tool for tracking AI‑generated text provenance, offering modest technical relevance and practical use for developers, but its impact is limited and not urgently critical.",
+        "relevance_rubric": {
+          "novelty": 12,
+          "technical_relevance": 15,
+          "applicability": 14,
+          "timeliness": 12
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 57942.74,
+        "risk": 1558.49
+      }
+    },
+    {
+      "signal_id": "huggingface:MiniMaxAI/MiniMax-H3",
+      "source": "huggingface",
+      "title": "HF Model: MiniMaxAI/MiniMax-H3",
+      "gold": {
+        "relevance_score": 65,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 66,
+        "relevance_reasoning": "The model introduces a moderately new image‑text‑to‑video capability that is directly relevant to AI/ML engineers, is widely downloaded indicating practical use, and is timely enough given current interest in video generation.",
+        "relevance_rubric": {
+          "novelty": 12,
+          "technical_relevance": 24,
+          "applicability": 18,
+          "timeliness": 12
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [
+          "No evidence of risk"
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58221.28,
+        "risk": 2094.82
+      }
+    },
+    {
+      "signal_id": "huggingface:black-forest-labs/FLUX.1-dev",
+      "source": "huggingface",
+      "title": "HF Model: black-forest-labs/FLUX.1-dev",
+      "gold": {
+        "relevance_score": 45,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 80,
+        "relevance_reasoning": "A recent, high‑performing text‑to‑image diffusion model that directly supports ML development, is immediately usable, and aligns with current interest in generative AI.",
+        "relevance_rubric": {
+          "novelty": 20,
+          "technical_relevance": 25,
+          "applicability": 20,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59059.07,
+        "risk": 883.39
+      }
+    },
+    {
+      "signal_id": "huggingface:hexgrad/Kokoro-82M",
+      "source": "huggingface",
+      "title": "HF Model: hexgrad/Kokoro-82M",
+      "gold": {
+        "relevance_score": 60,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 69,
+        "relevance_reasoning": "The model is a recent text‑to‑speech variant with moderate novelty, strong relevance to ML engineering, high practical use evidenced by downloads, and is timely due to recent associated research.",
+        "relevance_rubric": {
+          "novelty": 12,
+          "technical_relevance": 22,
+          "applicability": 20,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58294.76,
+        "risk": 1774.77
+      }
+    },
+    {
+      "signal_id": "huggingface:stabilityai/stable-diffusion-xl-base-1.0",
+      "source": "huggingface",
+      "title": "HF Model: stabilityai/stable-diffusion-xl-base-1.0",
+      "gold": {
+        "relevance_score": 40,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 77,
+        "relevance_reasoning": "The stable-diffusion-xl-base-1.0 model introduces a newer diffusion architecture that is directly useful for AI/ML developers building text‑to‑image pipelines, is readily deployable, and is timely given current interest in high‑quality generative models.",
+        "relevance_rubric": {
+          "novelty": 15,
+          "technical_relevance": 25,
+          "applicability": 22,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58118.31,
+        "risk": 1672.44
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/210a0843c601",
+      "source": "medium",
+      "title": "RAG vs. Fine-Tuning: The Wrong Question Enterprises Are Asking",
+      "gold": {
+        "relevance_score": 45,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 25,
+        "relevance_reasoning": "The brief title hints at a relevant AI/ML topic but provides no concrete new insight, actionable guidance, or time‑sensitive context.",
+        "relevance_rubric": {
+          "novelty": 5,
+          "technical_relevance": 10,
+          "applicability": 5,
+          "timeliness": 5
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [
+          "No actionable risk identified in the provided signal."
+        ],
+        "evidence": [
+          "Signal content discusses AI concepts without mentioning code changes or vulnerabilities."
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58077.08,
+        "risk": 2137.44
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/8582041951d7",
+      "source": "medium",
+      "title": "Change One Thing at a Time When an AI Result Goes Wrong",
+      "gold": {
+        "relevance_score": 35,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 37,
+        "relevance_reasoning": "The article offers a common debugging habit for AI results, providing modest practical value but little new insight or urgent relevance.",
+        "relevance_rubric": {
+          "novelty": 5,
+          "technical_relevance": 12,
+          "applicability": 15,
+          "timeliness": 5
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [
+          "No evidence of a technical or security change"
+        ],
+        "evidence": [
+          "Signal discusses a habit for handling AI results, not an API or library change"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58413.89,
+        "risk": 1745.48
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/a9db7d85f765",
+      "source": "medium",
+      "title": "I Used to Catch AI-Written Text. Now I Catch AI Getting It Wrong.",
+      "gold": {
+        "relevance_score": 35,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 61,
+        "relevance_reasoning": "The article presents a moderately novel follow‑up to a 2023 paper on AI‑generated text detection, offering direct but niche relevance and practical steps for developers, and remains timely as AI output scrutiny grows.",
+        "relevance_rubric": {
+          "novelty": 15,
+          "technical_relevance": 20,
+          "applicability": 12,
+          "timeliness": 14
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 57963.12,
+        "risk": 1866.01
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/ab8f73ba9a9a",
+      "source": "medium",
+      "title": "Beyond Manual Redaction: How Automated Aadhaar Masking Strengthens Business Document Security",
+      "gold": {
+        "relevance_score": 25,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 35,
+        "relevance_reasoning": "The article describes an automated redaction use‑case with limited novel AI/ML content, modest relevance to developers, some practical utility, and moderate current interest.",
+        "relevance_rubric": {
+          "novelty": 5,
+          "technical_relevance": 8,
+          "applicability": 12,
+          "timeliness": 10
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [
+          "No explicit technical change reported"
+        ],
+        "evidence": [
+          "\"Beyond Manual Redaction: How Automated Aadhaar Masking Strengthens Business Document Security\""
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58210.22,
+        "risk": 1872.74
+      }
+    }
+  ],
+  "rescored_offline": true
+}

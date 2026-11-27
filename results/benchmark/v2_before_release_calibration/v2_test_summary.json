@@ -1,0 +1,113 @@
+{
+  "agent_version": "v2",
+  "split": "test",
+  "gold_file": "data\\release_enhanced\\test_gold_annotated_v4.json",
+  "gold_sha256": "240435dae96059d7779a1a1c8324d7f8333c79df11f3271afc38bf649d67775c",
+  "signal_count": 24,
+  "runs": 1,
+  "concurrency": 6,
+  "generated_at": "2026-11-25T11:47:28.361407+00:00",
+  "metrics": {
+    "relevance.mae": {
+      "mean": 19.375,
+      "std": 0.0,
+      "min": 19.375,
+      "max": 19.375,
+      "n": 1
+    },
+    "relevance.spearman": {
+      "mean": 0.6201944401925056,
+      "std": 0.0,
+      "min": 0.6201944401925056,
+      "max": 0.6201944401925056,
+      "n": 1
+    },
+    "relevance.ndcg_at_10": {
+      "mean": 0.780650959194131,
+      "std": 0.0,
+      "min": 0.780650959194131,
+      "max": 0.780650959194131,
+      "n": 1
+    },
+    "relevance.top_10_overlap": {
+      "mean": 0.6,
+      "std": 0.0,
+      "min": 0.6,
+      "max": 0.6,
+      "n": 1
+    },
+    "risk.accuracy": {
+      "mean": 0.9583333333333334,
+      "std": 0.0,
+      "min": 0.9583333333333334,
+      "max": 0.9583333333333334,
+      "n": 1
+    },
+    "risk.macro_f1_observed": {
+      "mean": 0.941031941031941,
+      "std": 0.0,
+      "min": 0.941031941031941,
+      "max": 0.941031941031941,
+      "n": 1
+    },
+    "risk.medium_recall": {
+      "mean": 0.8333333333333334,
+      "std": 0.0,
+      "min": 0.8333333333333334,
+      "max": 0.8333333333333334,
+      "n": 1
+    },
+    "risk.category_accuracy": {
+      "mean": 0.9166666666666666,
+      "std": 0.0,
+      "min": 0.9166666666666666,
+      "max": 0.9166666666666666,
+      "n": 1
+    },
+    "risk.breaking_f1": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 1
+    },
+    "risk.breaking_false_positives": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0,
+      "max": 0,
+      "n": 1
+    },
+    "execution.wall_time_s": {
+      "mean": 233.62663,
+      "std": 0.0,
+      "min": 233.62663,
+      "max": 233.62663,
+      "n": 1
+    },
+    "execution.fallback_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 1
+    },
+    "execution.cost_usd": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 1
+    },
+    "evidence.ungrounded_quote_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 1
+    }
+  },
+  "run_files": [
+    "v2_test_run1.json"
+  ]
+}

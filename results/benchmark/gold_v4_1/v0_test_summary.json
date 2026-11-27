@@ -1,0 +1,93 @@
+{
+  "agent_version": "v0",
+  "split": "test",
+  "gold_file": "data\\release_enhanced\\test_gold_annotated_v4_1.json",
+  "gold_sha256": "2eac6f07697b7e5efd4fc84d73e5bc5f8e059b5d0287f2141720e258185055f1",
+  "signal_count": 24,
+  "runs": 1,
+  "concurrency": 6,
+  "generated_at": "2026-11-25T11:39:34.507376+00:00",
+  "metrics": {
+    "relevance.mae": {
+      "mean": 26.916666666666668,
+      "std": 0.0,
+      "min": 26.916666666666668,
+      "max": 26.916666666666668,
+      "n": 1
+    },
+    "relevance.spearman": {
+      "mean": 0.6782970794467212,
+      "std": 0.0,
+      "min": 0.6782970794467212,
+      "max": 0.6782970794467212,
+      "n": 1
+    },
+    "relevance.ndcg_at_10": {
+      "mean": 0.7825910232740916,
+      "std": 0.0,
+      "min": 0.7825910232740916,
+      "max": 0.7825910232740916,
+      "n": 1
+    },
+    "relevance.top_10_overlap": {
+      "mean": 0.7,
+      "std": 0.0,
+      "min": 0.7,
+      "max": 0.7,
+      "n": 1
+    },
+    "risk.accuracy": {
+      "mean": 0.7391304347826086,
+      "std": 0.0,
+      "min": 0.7391304347826086,
+      "max": 0.7391304347826086,
+      "n": 1
+    },
+    "risk.macro_f1_observed": {
+      "mean": 0.5574324324324325,
+      "std": 0.0,
+      "min": 0.5574324324324325,
+      "max": 0.5574324324324325,
+      "n": 1
+    },
+    "risk.medium_recall": {
+      "mean": 0.16666666666666666,
+      "std": 0.0,
+      "min": 0.16666666666666666,
+      "max": 0.16666666666666666,
+      "n": 1
+    },
+    "risk.breaking_f1": {
+      "mean": 0.8,
+      "std": 0.0,
+      "min": 0.8,
+      "max": 0.8,
+      "n": 1
+    },
+    "risk.breaking_false_positives": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1,
+      "max": 1,
+      "n": 1
+    },
+    "execution.wall_time_s": {
+      "mean": 233.12198999999998,
+      "std": 0.0,
+      "min": 233.12198999999998,
+      "max": 233.12198999999998,
+      "n": 1
+    },
+    "execution.fallback_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 1
+    }
+  },
+  "run_files": [
+    "v0_test_run1.json"
+  ],
+  "rescored_offline": true
+}

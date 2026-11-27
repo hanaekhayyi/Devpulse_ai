@@ -1,0 +1,99 @@
+{
+  "agent_version": "v1.1",
+  "split": "test",
+  "gold_file": "data\\release_enhanced\\test_gold_annotated_v4.json",
+  "gold_sha256": "240435dae96059d7779a1a1c8324d7f8333c79df11f3271afc38bf649d67775c",
+  "signal_count": 24,
+  "runs": 1,
+  "concurrency": 6,
+  "generated_at": "2026-11-25T11:43:31.408647+00:00",
+  "metrics": {
+    "relevance.mae": {
+      "mean": 20.333333333333332,
+      "std": 0.0,
+      "min": 20.333333333333332,
+      "max": 20.333333333333332,
+      "n": 1
+    },
+    "relevance.spearman": {
+      "mean": 0.5647427718084733,
+      "std": 0.0,
+      "min": 0.5647427718084733,
+      "max": 0.5647427718084733,
+      "n": 1
+    },
+    "relevance.ndcg_at_10": {
+      "mean": 0.7184292232555661,
+      "std": 0.0,
+      "min": 0.7184292232555661,
+      "max": 0.7184292232555661,
+      "n": 1
+    },
+    "relevance.top_10_overlap": {
+      "mean": 0.6,
+      "std": 0.0,
+      "min": 0.6,
+      "max": 0.6,
+      "n": 1
+    },
+    "risk.accuracy": {
+      "mean": 0.8333333333333334,
+      "std": 0.0,
+      "min": 0.8333333333333334,
+      "max": 0.8333333333333334,
+      "n": 1
+    },
+    "risk.macro_f1_observed": {
+      "mean": 0.7,
+      "std": 0.0,
+      "min": 0.7,
+      "max": 0.7,
+      "n": 1
+    },
+    "risk.medium_recall": {
+      "mean": 0.3333333333333333,
+      "std": 0.0,
+      "min": 0.3333333333333333,
+      "max": 0.3333333333333333,
+      "n": 1
+    },
+    "risk.category_accuracy": {
+      "mean": 0.7916666666666666,
+      "std": 0.0,
+      "min": 0.7916666666666666,
+      "max": 0.7916666666666666,
+      "n": 1
+    },
+    "risk.breaking_f1": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 1
+    },
+    "risk.breaking_false_positives": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0,
+      "max": 0,
+      "n": 1
+    },
+    "execution.wall_time_s": {
+      "mean": 232.72629999999998,
+      "std": 0.0,
+      "min": 232.72629999999998,
+      "max": 232.72629999999998,
+      "n": 1
+    },
+    "execution.fallback_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 1
+    }
+  },
+  "run_files": [
+    "v1_1_test_run1.json"
+  ]
+}

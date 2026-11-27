@@ -1,0 +1,1736 @@
+{
+  "benchmark_version": "v0",
+  "run_index": 1,
+  "generated_at": "2026-11-25T11:19:41.318248+00:00",
+  "split": "dev",
+  "dataset": {
+    "signals_file": "data\\release_enhanced\\signals_frozen.json",
+    "gold_file": "data\\release_enhanced\\dev_gold_annotated_v4_1.json",
+    "signals_sha256": "6bb6e0b882b017a6bf0e1b3ee8f09f8a3ef884dd1a25584193d019758cf10d94",
+    "gold_sha256": "09c6ba1cce005fd3cd4a28021b80179b1ea4c98a793073ddf722ed4605868321",
+    "signal_count": 48
+  },
+  "models": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "base_url": "https://api.groq.com/openai/v1"
+  },
+  "execution": {
+    "duration_ms": 472854.18,
+    "concurrency": 6,
+    "api_calls_requested": 96,
+    "relevance_fallbacks": 0,
+    "risk_fallbacks": 0
+  },
+  "metrics": {
+    "relevance": {
+      "support": 48,
+      "invalid_predictions": 0,
+      "spearman": 0.645032202083266,
+      "ndcg_at_10": 0.6190411499288971,
+      "ndcg_at_10_definition": "graded_gain_2_power_normalized_score_0_1",
+      "ndcg_at_10_legacy": 1.3781816920722139e-06,
+      "top_10_overlap": 0.3,
+      "mean_absolute_error": 23.25
+    },
+    "risk": {
+      "support": 44,
+      "invalid_predictions": 4,
+      "breaking_changes": {
+        "support": 44,
+        "positive_support": 2,
+        "true_positives": 2,
+        "true_negatives": 42,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positive_rate": 0.0
+      },
+      "risk_level": {
+        "support": 44,
+        "accuracy": 0.8636363636363636,
+        "macro_f1_observed_classes": 0.7451737451737452,
+        "macro_f1_all_declared_classes": 0.3725868725868726,
+        "classes_without_support": [
+          "HIGH",
+          "CRITICAL"
+        ],
+        "per_class": {
+          "LOW": {
+            "support": 34,
+            "precision": 0.85,
+            "recall": 1.0,
+            "f1": 0.9189189189189189
+          },
+          "MEDIUM": {
+            "support": 10,
+            "precision": 1.0,
+            "recall": 0.4,
+            "f1": 0.5714285714285715
+          },
+          "HIGH": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "CRITICAL": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "confusion_matrix": {
+          "LOW": {
+            "LOW": 34,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "MEDIUM": {
+            "LOW": 6,
+            "MEDIUM": 4,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "HIGH": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "CRITICAL": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          }
+        }
+      },
+      "risk_category": {
+        "support": 0,
+        "accuracy": null
+      }
+    }
+  },
+  "diagnostics": {
+    "available": false
+  },
+  "records": [
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31211v1",
+      "source": "arxiv",
+      "title": "Verifying the Outputs of PDE Solvers: From Finite Elements to Neural Surrogates",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 72,
+        "relevance_reasoning": "Provides a novel, actionable method for certifying neural surrogate PDE solvers, directly impacting ML engineers building scientific simulation models.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 1041.69,
+        "risk": 524.13
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31215v1",
+      "source": "arxiv",
+      "title": "Seeking in Space: Benchmarking Purposeful Active Exploration of Vision-Language Models for Spatial Reasoning",
+      "gold": {
+        "relevance_score": 45,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "Introduces a new benchmark for active spatial reasoning in vision‑language models, directly impacting research and development of embodied AI systems.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 20595.86,
+        "risk": 844.79
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31216v1",
+      "source": "arxiv",
+      "title": "LeJEPA Features Are Not Isotropic, and Should Not Be",
+      "gold": {
+        "relevance_score": 35,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 75,
+        "relevance_reasoning": "Introduces a practical improvement to self‑supervised feature regularization, directly impacting model training efficiency for AI/ML engineers.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 30743.9,
+        "risk": 749.23
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31222v1",
+      "source": "arxiv",
+      "title": "CTLink: A Text-Prompted Segmentation Model for Linking Radiology Report Findings to 3D Chest CT Scans",
+      "gold": {
+        "relevance_score": 15,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "Introduces a novel text‑prompted 3D segmentation model and dataset for radiology, offering actionable research and development opportunities in medical imaging AI.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 50419.27,
+        "risk": 1219.9
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31223v1",
+      "source": "arxiv",
+      "title": "Agentic AI for Intent Management and Control in Autonomous Communication Networks",
+      "gold": {
+        "relevance_score": 35,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 65,
+        "relevance_reasoning": "Introduces a novel multi-agent framework for intent-driven network control, offering actionable concepts for AI/ML engineers interested in applied agentic systems, though not directly advancing core ML methods.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Potential for misaligned intent interpretation leading to unintended network behavior",
+          "Privacy concerns around data used for training AI agents",
+          "Reliance on AI could increase attack surface if models are compromised"
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 10618.58,
+        "risk": 1405.24
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31225v1",
+      "source": "arxiv",
+      "title": "Self-Supervised Dataset Distillation via Mutual Information Maximization",
+      "gold": {
+        "relevance_score": 25,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "Introduces a novel, efficient self‑supervised dataset distillation technique that could directly impact how ML engineers train models with limited data.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 40925.77,
+        "risk": 670.35
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31228v1",
+      "source": "arxiv",
+      "title": "Language Models Steer on Injected Uncertainty Tokens, but Fail to Self-Monitor In Situ",
+      "gold": {
+        "relevance_score": 55,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 85,
+        "relevance_reasoning": "The paper directly investigates confidence token injection and self‑monitoring in open‑weight LLMs, offering actionable insights for building more reliable AI agents.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58893.32,
+        "risk": 1136.79
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31233v1",
+      "source": "arxiv",
+      "title": "TowerBridge: Bridging the Dual-Encoder Modality Gap via Weight-Space Programming",
+      "gold": {
+        "relevance_score": 50,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 75,
+        "relevance_reasoning": "Introduces a novel method to address modality gap in CLIP-like dual encoders, directly impacting retrieval performance for ML engineers working on multimodal models.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "The paper introduces a new statistical approach for identifying modality gaps, which may require significant changes to the retrieval pipeline if adopted.",
+          "No explicit security vulnerabilities are reported; however, any new statistical models could inadvertently expose model internals if improperly integrated."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58638.42,
+        "risk": 862.09
+      }
+    },
+    {
+      "signal_id": "github:1469542497",
+      "source": "github",
+      "title": "isadhanjana-cpu/gta-5-enhanced-mod-menu",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 12,
+        "relevance_reasoning": "The GitHub project is a game mod menu unrelated to AI/ML development, offering no actionable insight for engineers.",
+        "relevance_rubric": {},
+        "risk_level": "MEDIUM",
+        "risk_category": null,
+        "concerns": [
+          "Potential inclusion of malicious or unauthorized code that could compromise system security",
+          "Risk of hooking/modifying game binaries which may violate platform or game EULA",
+          "Lack of official support or updates increases chance of undiscovered vulnerabilities",
+          "Possible use of outdated libraries or APIs that may become deprecated",
+          "No clear documentation on security auditing or code review"
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58947.5,
+        "risk": 1294.09
+      }
+    },
+    {
+      "signal_id": "github:1469554725",
+      "source": "github",
+      "title": "cfiset41-lab/fiddler-everywhere-fasaron",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 55,
+        "relevance_reasoning": "Useful for debugging API calls in ML pipelines, but not core to model development or novel AI techniques.",
+        "relevance_rubric": {},
+        "risk_level": "MEDIUM",
+        "risk_category": null,
+        "concerns": [
+          "Potential for intercepting and modifying sensitive HTTP traffic, exposing data to attackers or unintended parties; risk of MITM if not used securely; possibility of misuse in production environments; no explicit security controls shown."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59198.58,
+        "risk": 1186.22
+      }
+    },
+    {
+      "signal_id": "github:1469554819",
+      "source": "github",
+      "title": "lianmarcelo/ea-sports-fc-26-fut-web-app-sniping-kacelan",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 15,
+        "relevance_reasoning": "The signal is about a gaming sniping web app, unrelated to AI/ML development.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "No publicly disclosed vulnerabilities found in the provided description. The repository appears to be a community-built sniping tool for a game; such tools often rely on in-game data and may be affected by game updates. No indication of handling sensitive data or exposing open ports."
+        ],
+        "evidence": [],
+        "breaking_changes": null,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58956.3,
+        "risk": 1066.48
+      }
+    },
+    {
+      "signal_id": "github:1469780834",
+      "source": "github",
+      "title": "aqib-techie/solara-roblox-executor-2026",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "HIGH",
+        "breaking_changes": false,
+        "risk_category": "SECURITY"
+      },
+      "predictions": {
+        "relevance_score": 10,
+        "relevance_reasoning": "The signal pertains to executing Lua scripts in Roblox, which is unrelated to AI/ML development.",
+        "relevance_rubric": {},
+        "risk_level": "HIGH",
+        "risk_category": null,
+        "concerns": [
+          "Potential execution of arbitrary Lua scripts in a Roblox environment can introduce security vulnerabilities such as privilege escalation, data tampering, or denial-of-service attacks. The repository may rely on outdated or unverified third‑party libraries, increasing the risk of malicious code injection. The project name suggests it is an executor, a class of software commonly used for exploiting game scripts, which may violate Roblox’s terms of service and lead to account bans or legal repercussions. No explicit audit or signing of the code is mentioned, leaving the integrity of the script uncertain. Additionally, the description is incomplete, raising concerns about hidden malicious functionalities."
+        ],
+        "evidence": [],
+        "breaking_changes": null,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59024.06,
+        "risk": 1095.21
+      }
+    },
+    {
+      "signal_id": "github:1469787605",
+      "source": "github",
+      "title": "damianenriquegonzalez31-maker/bloxstrap-roblox-fflags-2026",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 20,
+        "relevance_reasoning": "Configuring Roblox client flags is unrelated to AI/ML development, offering minimal value to AI/ML engineers.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Uses third‑party repository which may not be vetted, potential for malicious flag manipulation; relies on Roblox FastFlags which could change behavior without notice"
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59044.52,
+        "risk": 935.91
+      }
+    },
+    {
+      "signal_id": "github:1469796763",
+      "source": "github",
+      "title": "fitronnurkhair953-beep/grow-a-garden-script-roblox-maderin",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 15,
+        "relevance_reasoning": "The GitHub repository is a Roblox garden script, which holds minimal relevance for AI/ML developers.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Limited information available about the implementation details; potential for undisclosed vulnerabilities in third‑party dependencies.",
+          "Possible lack of recent maintenance or updates, which could expose unpatched bugs."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59116.44,
+        "risk": 1010.25
+      }
+    },
+    {
+      "signal_id": "github:1469797857",
+      "source": "github",
+      "title": "James28100/shadps4-bloodborne-pc-60fps-patch-vertex-explosion-dakalin",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 12,
+        "relevance_reasoning": "The signal describes a gaming graphics patch unrelated to AI/ML development, offering little relevance or actionable insight for AI/ML engineers.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Potential game instability or crashes due to modified vertex handling",
+          "Patch modifies game binaries which may lead to compatibility issues with future updates or other mods"
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59062.4,
+        "risk": 881.93
+      }
+    },
+    {
+      "signal_id": "github:1469804419",
+      "source": "github",
+      "title": "korliolian-crypto/matlab-r2026a-dakalor",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 35,
+        "relevance_reasoning": "MATLAB is useful for numerical work, but the signal offers a generic environment update rather than AI/ML‑specific tools or breakthroughs.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "No publicly disclosed vulnerabilities in the repository or the specified MATLAB version.",
+          "The signal references MATLAB R2026A which is a future release; potential compatibility issues with older MATLAB versions.",
+          "No immediate deprecation warnings or migration notes were found in the provided description."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58818.07,
+        "risk": 929.35
+      }
+    },
+    {
+      "signal_id": "github_releases:agno-agi/agno:448945912",
+      "source": "github_releases",
+      "title": "agno-agi/agno v3.2.1",
+      "gold": {
+        "relevance_score": 70,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 65,
+        "relevance_reasoning": "Introduces API enhancements for session handling and file access that could streamline data management in AI workflows, making it moderately important for AI/ML developers who use the agno platform.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "New API endpoints expose session compaction details (message counts and token counts), which may inadvertently reveal sensitive usage patterns if not properly secured.",
+          "Company file and note endpoints expose file paths; ensure path traversal protections and appropriate authentication/authorization are in place."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59185.0,
+        "risk": 852.48
+      }
+    },
+    {
+      "signal_id": "github_releases:huggingface/transformers:444297898",
+      "source": "github_releases",
+      "title": "huggingface/transformers Release v5.23.0",
+      "gold": {
+        "relevance_score": 70,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 75,
+        "relevance_reasoning": "Introducing a new multimodal model (Inkling2) in the popular Transformers library is highly relevant for AI/ML engineers building text‑image applications, though it is not an urgent breaking change.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58728.4,
+        "risk": 1080.55
+      }
+    },
+    {
+      "signal_id": "github_releases:huggingface/transformers:453665914",
+      "source": "github_releases",
+      "title": "huggingface/transformers Release v5.24.0",
+      "gold": {
+        "relevance_score": 65,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "Introduces a new multimodal model and architectural detail that AI/ML engineers can immediately experiment with, making it highly relevant but not critical for all workflows.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58968.19,
+        "risk": 903.92
+      }
+    },
+    {
+      "signal_id": "github_releases:langchain-ai/langchain:455714958",
+      "source": "github_releases",
+      "title": "langchain-ai/langchain langchain-perplexity==1.5.0",
+      "gold": {
+        "relevance_score": 35,
+        "risk_level": "MEDIUM",
+        "breaking_changes": true,
+        "risk_category": "COMPATIBILITY"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "The release adds security fixes, updates dependencies, and drops Python 3.10, which is important for LangChain users but not a breakthrough feature.",
+        "relevance_rubric": {},
+        "risk_level": "MEDIUM",
+        "risk_category": null,
+        "concerns": [
+          "Patch applied to vulnerable integration dependencies, indicating prior security issues were addressed; developers should verify affected components and update accordingly.",
+          "Removal of EOL Python 3.10 support for partner packages may break environments still using that interpreter; codebases must upgrade to newer Python versions.",
+          "Certifi dependency bump to 2026.10.23 may introduce updated root certificates that could affect SSL validation behavior in older code."
+        ],
+        "evidence": [],
+        "breaking_changes": true,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59063.46,
+        "risk": 999.69
+      }
+    },
+    {
+      "signal_id": "github_releases:langchain-ai/langchain:455731375",
+      "source": "github_releases",
+      "title": "langchain-ai/langchain langchain-qdrant==1.2.0",
+      "gold": {
+        "relevance_score": 40,
+        "risk_level": "MEDIUM",
+        "breaking_changes": true,
+        "risk_category": "COMPATIBILITY"
+      },
+      "predictions": {
+        "relevance_score": 75,
+        "relevance_reasoning": "The release contains security patches, dependency updates, and removal of old Python support, which directly impacts AI/ML engineers using LangChain and its Qdrant integration.",
+        "relevance_rubric": {},
+        "risk_level": "MEDIUM",
+        "risk_category": null,
+        "concerns": [
+          "Security patches applied to vulnerable integration dependencies (revert & build patches) – indicates prior vulnerability fixes.",
+          "Removal of Python 3.10 support may affect projects still targeting that version.",
+          "Dependency upgrades (filelock bump, third‑party relax) could introduce minor API changes in partner packages."
+        ],
+        "evidence": [],
+        "breaking_changes": true,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59061.3,
+        "risk": 973.68
+      }
+    },
+    {
+      "signal_id": "github_releases:openai/openai-python:452156013",
+      "source": "github_releases",
+      "title": "openai/openai-python v3.57.0",
+      "gold": {
+        "relevance_score": 50,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "The new OpenAI Python SDK adds Live WebRTC standby support, a notable feature for AI/ML developers integrating real‑time streaming, making it highly relevant but not yet critical for all workflows.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59109.13,
+        "risk": 975.58
+      }
+    },
+    {
+      "signal_id": "github_releases:openai/openai-python:455857182",
+      "source": "github_releases",
+      "title": "openai/openai-python v3.58.0",
+      "gold": {
+        "relevance_score": 65,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 85,
+        "relevance_reasoning": "A new OpenAI Python SDK release adds session spending limit controls and clarifies API usage, directly impacting AI/ML developers integrating OpenAI services.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58957.33,
+        "risk": 949.66
+      }
+    },
+    {
+      "signal_id": "github_releases:pydantic/pydantic:451410642",
+      "source": "github_releases",
+      "title": "pydantic/pydantic v2.14.4 2026-11-19",
+      "gold": {
+        "relevance_score": 50,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 55,
+        "relevance_reasoning": "The release provides incremental bug fixes and minor performance tweaks for a widely used validation library, useful for AI/ML developers but not urgent or groundbreaking.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Upgrade of jiter to v0.19.0 addresses memory issues introduced by the previous release.",
+          "Cache of UTC TzInfo instance may improve performance but requires ensuring timezone handling remains correct."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59221.48,
+        "risk": 871.24
+      }
+    },
+    {
+      "signal_id": "hackernews:40491303",
+      "source": "hackernews",
+      "title": "Show HN: Get paid to do your own ML research",
+      "gold": {
+        "relevance_score": 15,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 70,
+        "relevance_reasoning": "Offers funded research opportunities directly to ML engineers, making it highly relevant but not immediately actionable for all developers.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59211.87,
+        "risk": 1181.35
+      }
+    },
+    {
+      "signal_id": "hackernews:40527471",
+      "source": "hackernews",
+      "title": "Ask HN: With the rise of AI, how to approach my new career in software dev?",
+      "gold": {
+        "relevance_score": 15,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 22,
+        "relevance_reasoning": "The post is a generic career advice thread, offering little technical insight or actionable AI/ML development information.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58794.83,
+        "risk": 1204.32
+      }
+    },
+    {
+      "signal_id": "hackernews:42174829",
+      "source": "hackernews",
+      "title": "Show HN: FastGraphRAG – Better RAG using good old PageRank",
+      "gold": {
+        "relevance_score": 75,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "Introduces a novel, open-source RAG method using PageRank, directly impacting AI/ML engineers building retrieval and reasoning pipelines.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Potential unverified security posture of the new FastGraphRAG library (e.g., unknown dependencies, lack of formal security audits), possible instability or lack of documentation for production use.",
+          "Limited information on backward compatibility; adopting it may require rewriting or reconfiguring existing RAG pipelines.",
+          "No explicit deprecation notices or migration guides provided, so developers may need to evaluate compatibility with their current stack."
+        ],
+        "evidence": [],
+        "breaking_changes": null,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59093.1,
+        "risk": 1047.58
+      }
+    },
+    {
+      "signal_id": "hackernews:44649115",
+      "source": "hackernews",
+      "title": "Launch HN: Promi (YC S24) – Personalize e-commerce discounts and retail offers",
+      "gold": {
+        "relevance_score": 20,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 70,
+        "relevance_reasoning": "The platform uses AI for real‑time personalization in e‑commerce, offering actionable insights for ML engineers working on recommendation and discount optimization models.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "No explicit security details disclosed; potential exposure of personal data through real‑time discounting; reliance on third‑party AI service may introduce data privacy risks"
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58763.71,
+        "risk": 1113.47
+      }
+    },
+    {
+      "signal_id": "hackernews:44901528",
+      "source": "hackernews",
+      "title": "Launch HN: Cyberdesk (YC S25) – Automate Windows legacy desktop apps",
+      "gold": {
+        "relevance_score": 55,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 55,
+        "relevance_reasoning": "Provides a new tool for deterministic desktop automation, which could be useful for AI/ML workflows involving legacy Windows apps, but its immediate impact on core AI/ML development is limited.",
+        "relevance_rubric": {},
+        "risk_level": "MEDIUM",
+        "risk_category": null,
+        "concerns": [
+          "Automated control of legacy Windows applications may expose the system to privilege escalation or unintended data access if the agent is compromised or misconfigured; potential for malicious actors to abuse the deterministic agent to automate destructive actions; lack of explicit security hardening details.",
+          "Limited publicly available security assessment or audit information for the tool, raising uncertainty about its robustness against injection or side‑channel attacks.",
+          "Unclear whether the agent requires elevated privileges or registry modifications, which could introduce system instability or compatibility issues with other software."
+        ],
+        "evidence": [],
+        "breaking_changes": null,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59095.28,
+        "risk": 1027.03
+      }
+    },
+    {
+      "signal_id": "hackernews:45918355",
+      "source": "hackernews",
+      "title": "Ask HN: Anyone else disillusioned with \"AI experts\" in their team?",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 25,
+        "relevance_reasoning": "The signal is a workplace opinion piece without actionable technical insight, so it offers minimal relevance to AI/ML developers.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Potential for insecure AI implementation due to lack of expertise",
+          "Risk of data leakage or misuse in AI workflows",
+          "Possible exposure to unverified or poorly trained models",
+          "Unclear understanding of AI concepts could lead to misaligned security controls"
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59120.0,
+        "risk": 873.5
+      }
+    },
+    {
+      "signal_id": "hackernews:47151598",
+      "source": "hackernews",
+      "title": "Launch HN: TeamOut (YC W22) – AI agent for planning company retreats",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 45,
+        "relevance_reasoning": "It's an interesting application of conversational AI but offers limited technical insight or actionable impact for AI/ML developers.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Potential data privacy concerns if sensitive company information is shared via the AI agent.",
+          "Risk of inaccurate or inappropriate event planning recommendations due to AI hallucination or misinterpretation of user intent."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58559.61,
+        "risk": 1228.93
+      }
+    },
+    {
+      "signal_id": "hackernews:48819808",
+      "source": "hackernews",
+      "title": "Show HN: Rowboat – Open-source, local-first alternative to Claude Desktop",
+      "gold": {
+        "relevance_score": 75,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 55,
+        "relevance_reasoning": "Rowboat offers a local-first UI for Claude, which may interest AI developers building custom front‑ends, but it’s not a core ML tool or breakthrough technology.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58719.02,
+        "risk": 1194.79
+      }
+    },
+    {
+      "signal_id": "huggingface:CompVis/stable-diffusion-v1-4",
+      "source": "huggingface",
+      "title": "HF Model: CompVis/stable-diffusion-v1-4",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "A widely-used stable-diffusion model with high download/like counts is highly relevant for AI/ML engineers working on generative image tasks, though it's not brand‑new news.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58895.82,
+        "risk": 1314.9
+      }
+    },
+    {
+      "signal_id": "huggingface:Lightricks/LTX-2.5",
+      "source": "huggingface",
+      "title": "HF Model: Lightricks/LTX-2.5",
+      "gold": {
+        "relevance_score": 60,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 75,
+        "relevance_reasoning": "A popular, high-download diffusion model for image-to-video generation offers immediate utility for developers building generative video pipelines.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "No obvious security vulnerabilities reported in the model metadata.",
+          "Large download count may indicate widespread use; any future updates could impact numerous deployments.",
+          "Model relies on diffusion and video pipelines which may have GPU and memory requirements; ensure compatibility with target infrastructure."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59847.33,
+        "risk": 578.71
+      }
+    },
+    {
+      "signal_id": "huggingface:Qwen/Qwen3.8-27B",
+      "source": "huggingface",
+      "title": "HF Model: Qwen/Qwen3.8-27B",
+      "gold": {
+        "relevance_score": 85,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 78,
+        "relevance_reasoning": "A large, popular multimodal model with extensive downloads is highly relevant for AI/ML engineers building image‑text pipelines, though not a breakthrough that demands immediate action.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Large model size may increase memory usage and inference latency, potentially impacting deployment environments.",
+          "Model output is not explicitly filtered for harmful content; users should implement safety checks if used in production.",
+          "No built‑in usage limits or rate‑limiting information provided, which could be a consideration for public APIs."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58912.99,
+        "risk": 1271.33
+      }
+    },
+    {
+      "signal_id": "huggingface:Qwen/Qwen3.8-Flash-Next",
+      "source": "huggingface",
+      "title": "HF Model: Qwen/Qwen3.8-Flash-Next",
+      "gold": {
+        "relevance_score": 70,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 75,
+        "relevance_reasoning": "A popular new multimodal model on Hugging Face is highly relevant for AI/ML developers building image‑text pipelines, offering actionable resources and significant community adoption.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58969.92,
+        "risk": 1390.48
+      }
+    },
+    {
+      "signal_id": "huggingface:deepseek-ai/DeepSeek-R1",
+      "source": "huggingface",
+      "title": "HF Model: deepseek-ai/DeepSeek-R1",
+      "gold": {
+        "relevance_score": 65,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SECURITY"
+      },
+      "predictions": {
+        "relevance_score": 85,
+        "relevance_reasoning": "A popular new text-generation model with millions of downloads is highly relevant for AI/ML engineers building conversational systems.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Potential for biased or harmful text generation; model may not have extensive safety mitigations; requires careful prompt engineering and monitoring for misuse"
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58790.9,
+        "risk": 1494.65
+      }
+    },
+    {
+      "signal_id": "huggingface:facebook/sam3",
+      "source": "huggingface",
+      "title": "HF Model: facebook/sam3",
+      "gold": {
+        "relevance_score": 60,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 72,
+        "relevance_reasoning": "A high-download SAM3 model on Hugging Face provides a ready-to-use mask generation pipeline, which is valuable for AI/ML engineers working on vision tasks.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59036.81,
+        "risk": 1373.39
+      }
+    },
+    {
+      "signal_id": "huggingface:meta-llama/Llama-3.1-8B-Instruct",
+      "source": "huggingface",
+      "title": "HF Model: meta-llama/Llama-3.1-8B-Instruct",
+      "gold": {
+        "relevance_score": 45,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 85,
+        "relevance_reasoning": "A new Llama-3.1 8B instruct model on Hugging Face is highly relevant for AI/ML engineers building or fine‑tuning text generation pipelines.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58686.28,
+        "risk": 1310.12
+      }
+    },
+    {
+      "signal_id": "huggingface:moonshotai/Kimi-K3",
+      "source": "huggingface",
+      "title": "HF Model: moonshotai/Kimi-K3",
+      "gold": {
+        "relevance_score": 75,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SECURITY"
+      },
+      "predictions": {
+        "relevance_score": 75,
+        "relevance_reasoning": "A popular new transformer model with extensive downloads and tags relevant to image-text tasks, offering actionable resources for AI/ML engineers.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58585.61,
+        "risk": 1235.72
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/00a811efb7f9",
+      "source": "medium",
+      "title": "How to Build a $200/Day With AI Automation Business?",
+      "gold": {
+        "relevance_score": 10,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 45,
+        "relevance_reasoning": "The article discusses business applications of AI agents, which is interesting for ML engineers but offers limited technical depth or immediate actionable insight.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58544.57,
+        "risk": 1459.36
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/155b9cd52da9",
+      "source": "medium",
+      "title": "Stop Calling Yourself an AI Engineer. The Job Already Has Another Name.",
+      "gold": {
+        "relevance_score": 25,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 45,
+        "relevance_reasoning": "The article discusses hiring terminology rather than technical advances, offering limited actionable insight for AI/ML engineers.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58663.14,
+        "risk": 1031.52
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/43db0ed9165f",
+      "source": "medium",
+      "title": "Why Linux Is Built for the AI-First World",
+      "gold": {
+        "relevance_score": 20,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 70,
+        "relevance_reasoning": "The article discusses Linux's suitability for AI workloads, offering useful context for AI/ML engineers but not immediate actionable guidance.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58760.48,
+        "risk": 1397.45
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/4b3e196ccaa5",
+      "source": "medium",
+      "title": "These 5 Claude Skills Are Blowing Up (November 2026)",
+      "gold": {
+        "relevance_score": 40,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 75,
+        "relevance_reasoning": "The article highlights new capabilities of Claude, a leading LLM, offering actionable insights for developers building or integrating AI systems.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58507.32,
+        "risk": 1338.19
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/5ce418d18cb9",
+      "source": "medium",
+      "title": "We Blamed the Model. The Model Wasn’t the Problem.",
+      "gold": {
+        "relevance_score": 60,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 70,
+        "relevance_reasoning": "The article discusses scaling AI agents and system-level reliability, offering actionable insights for ML engineers building production LLM pipelines.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58557.0,
+        "risk": 1228.42
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/7b69cfbd8f7c",
+      "source": "medium",
+      "title": "If You Understand These 9 AI Terms, You’re Ahead of 90% of Power BI Developers",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 45,
+        "relevance_reasoning": "The article explains AI terminology for Power BI, offering some useful concepts but is primarily targeted at Power BI developers rather than core AI/ML engineering.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58864.0,
+        "risk": 1205.14
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/dd79c26a1aa8",
+      "source": "medium",
+      "title": "Dual Lab releases PDF4WCAG Accessibility Checker 1.14",
+      "gold": {
+        "relevance_score": 10,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 15,
+        "relevance_reasoning": "The release is an accessibility tool for PDFs, which is largely unrelated to AI/ML development tasks.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [
+          "Potential compatibility issues with legacy PDF processing tools; users may need to verify that the new version works with existing workflows. No known security vulnerabilities reported. No deprecation notices announced."
+        ],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58600.39,
+        "risk": 1606.56
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/e64358ab76bf",
+      "source": "medium",
+      "title": "Australia’s AI inquiry checks the frontier labs. Who checks everyone else?",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 70,
+        "relevance_reasoning": "Highlights upcoming regulatory scrutiny on AI safety, important for developers to anticipate compliance but not an immediate technical change.",
+        "relevance_rubric": {},
+        "risk_level": "LOW",
+        "risk_category": null,
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": null
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58899.42,
+        "risk": 2220.36
+      }
+    }
+  ],
+  "rescored_offline": true
+}

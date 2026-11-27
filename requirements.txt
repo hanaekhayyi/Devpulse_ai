@@ -1,10 +1,13 @@
-# DevPulseAI Dependencies
-# Single provider (OpenAI) by default — no multi-provider setup required.
+# SignalGuard dependencies
+# Works with any OpenAI-compatible provider (Groq free tier by default, see .env.example).
 
-agno
-openai
-httpx
-feedparser
-streamlit>=1.30
+agno>=3.2,<4
+openai>=1.40
+pydantic>=2.6
+httpx>=0.27
+feedparser>=6.0
+python-dotenv>=1.0
 
-python-dotenv
+# Local web app
+starlette>=0.37
+uvicorn>=0.30

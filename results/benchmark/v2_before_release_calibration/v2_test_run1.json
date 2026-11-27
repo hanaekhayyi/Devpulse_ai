@@ -1,0 +1,2194 @@
+{
+  "benchmark_version": "v2",
+  "run_index": 1,
+  "generated_at": "2026-11-25T11:47:28.353553+00:00",
+  "split": "test",
+  "dataset": {
+    "signals_file": "data\\release_enhanced\\signals_frozen.json",
+    "gold_file": "data\\release_enhanced\\test_gold_annotated_v4.json",
+    "signals_sha256": "6bb6e0b882b017a6bf0e1b3ee8f09f8a3ef884dd1a25584193d019758cf10d94",
+    "gold_sha256": "240435dae96059d7779a1a1c8324d7f8333c79df11f3271afc38bf649d67775c",
+    "signal_count": 24
+  },
+  "models": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "base_url": "https://api.groq.com/openai/v1"
+  },
+  "execution": {
+    "duration_ms": 233626.63,
+    "concurrency": 6,
+    "api_calls_requested": 48,
+    "relevance_fallbacks": 0,
+    "risk_fallbacks": 0
+  },
+  "metrics": {
+    "relevance": {
+      "support": 24,
+      "invalid_predictions": 0,
+      "spearman": 0.6201944401925056,
+      "ndcg_at_10": 0.780650959194131,
+      "ndcg_at_10_definition": "graded_gain_2_power_normalized_score_0_1",
+      "ndcg_at_10_legacy": 0.3879594920235012,
+      "top_10_overlap": 0.6,
+      "mean_absolute_error": 19.375
+    },
+    "risk": {
+      "support": 24,
+      "invalid_predictions": 0,
+      "breaking_changes": {
+        "support": 24,
+        "positive_support": 2,
+        "true_positives": 2,
+        "true_negatives": 22,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positive_rate": 0.0
+      },
+      "risk_level": {
+        "support": 24,
+        "accuracy": 0.9583333333333334,
+        "macro_f1_observed_classes": 0.941031941031941,
+        "macro_f1_all_declared_classes": 0.4705159705159705,
+        "classes_without_support": [
+          "HIGH",
+          "CRITICAL"
+        ],
+        "per_class": {
+          "LOW": {
+            "support": 18,
+            "precision": 0.9473684210526315,
+            "recall": 1.0,
+            "f1": 0.972972972972973
+          },
+          "MEDIUM": {
+            "support": 6,
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1": 0.9090909090909091
+          },
+          "HIGH": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "CRITICAL": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "confusion_matrix": {
+          "LOW": {
+            "LOW": 18,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "MEDIUM": {
+            "LOW": 1,
+            "MEDIUM": 5,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "HIGH": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "CRITICAL": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          }
+        }
+      },
+      "risk_category": {
+        "support": 24,
+        "accuracy": 0.9166666666666666
+      }
+    }
+  },
+  "diagnostics": {
+    "available": true,
+    "llm_calls": 48,
+    "cache_hits": 0,
+    "retries": 0,
+    "input_tokens": 41479,
+    "output_tokens": 7179,
+    "cost_usd": 0.0,
+    "evidence_quotes": {
+      "exact": 20,
+      "fuzzy": 8,
+      "ungrounded": 0
+    },
+    "ungrounded_quote_rate": 0.0,
+    "risk_rule_interventions": 4,
+    "relevance_caps": 2,
+    "lure_signals_detected": 2,
+    "injection_signals_detected": 0,
+    "regrounded_offline": true
+  },
+  "records": [
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31212v1",
+      "source": "arxiv",
+      "title": "Flood forecasting using a physics-guided conditional denoising diffusion probabilistic model",
+      "gold": {
+        "relevance_score": 15,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 50,
+        "relevance_reasoning": "The paper introduces a conditional diffusion model for flood forecasting, an incremental but notable ML application; it is relevant to applied ML though domain‑specific, offers limited immediate usable artifacts, and is a fresh arXiv release without urgent action for LLM engineering.",
+        "relevance_rubric": {
+          "novelty": 12,
+          "technical_relevance": 18,
+          "applicability": 12,
+          "timeliness": 8
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Title: Flood forecasting using a physics-guided conditional denoising diffusion probabilistic model",
+          "High-resolution flood forecasting with full two-dimensional shallow water equation (SWE) solvers remains computationally expensive, even on GPUs."
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 1373.88,
+        "risk": 448.63
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 1,
+          "fuzzy": 1,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1369.19,
+            "input_tokens": 987,
+            "output_tokens": 205,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 438.35,
+            "input_tokens": 728,
+            "output_tokens": 134,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31227v1",
+      "source": "arxiv",
+      "title": "How Far Can Linear Go? BiPert, a Unified Framework for Single-Cell Perturbation Modelling",
+      "gold": {
+        "relevance_score": 10,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 44,
+        "relevance_reasoning": "The paper presents a new linear framework for single‑cell perturbation modeling, which is a notable but incremental advance in a niche ML application; it is only loosely related to LLM engineering, offers limited immediate usable artifacts, and while freshly published, does not demand immediate action for the team.",
+        "relevance_rubric": {
+          "novelty": 14,
+          "technical_relevance": 12,
+          "applicability": 8,
+          "timeliness": 10
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Title: How Far Can Linear Go? BiPert, a Unified Framework for Single-Cell Perturbation Modelling"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 21046.26,
+        "risk": 824.36
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 1,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 21038.84,
+            "input_tokens": 973,
+            "output_tokens": 239,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 815.02,
+            "input_tokens": 714,
+            "output_tokens": 105,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31237v1",
+      "source": "arxiv",
+      "title": "Let Vision-Language Models Generate Images through Their Representations",
+      "gold": {
+        "relevance_score": 50,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 56,
+        "relevance_reasoning": "The paper presents a notable new approach to using vision-language models for image generation, directly relevant to multimodal AI engineering, but currently offers only research ideas without released code, and while freshly published it does not yet demand immediate action.",
+        "relevance_rubric": {
+          "novelty": 16,
+          "technical_relevance": 22,
+          "applicability": 10,
+          "timeliness": 8
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Title: Let Vision-Language Models Generate Images through Their Representations"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 10987.97,
+        "risk": 797.36
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 1,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 10981.16,
+            "input_tokens": 961,
+            "output_tokens": 268,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 786.7,
+            "input_tokens": 702,
+            "output_tokens": 95,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "arxiv:http://arxiv.org/abs/2611.31240v1",
+      "source": "arxiv",
+      "title": "Pruning Autonomous Driving VLAs: What to Preserve for Reasoning and Action",
+      "gold": {
+        "relevance_score": 35,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 74,
+        "relevance_reasoning": "The paper presents a notable new approach to pruning vision-language-action models for autonomous driving, directly relevant to LLM/agent engineering, offers usable insights with some implementation effort, and is freshly published, prompting immediate consideration.",
+        "relevance_rubric": {
+          "novelty": 15,
+          "technical_relevance": 27,
+          "applicability": 16,
+          "timeliness": 16
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Pruning Autonomous Driving VLAs: What to Preserve for Reasoning and Action"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 31266.61,
+        "risk": 492.9
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 1,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 31260.05,
+            "input_tokens": 981,
+            "output_tokens": 252,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 483.53,
+            "input_tokens": 722,
+            "output_tokens": 118,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "github:1469445489",
+      "source": "github",
+      "title": "LeonidaReforge/Leonida",
+      "gold": {
+        "relevance_score": 10,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 36,
+        "relevance_reasoning": "LeonidaReforge appears to be a community-driven continuation of an existing project, offering incremental updates rather than a major new capability; it is moderately relevant to applied LLM engineering but not core, provides some usable code yet likely requires effort to integrate, and its recent activity suggests moderate timeliness.",
+        "relevance_rubric": {
+          "novelty": 8,
+          "technical_relevance": 12,
+          "applicability": 9,
+          "timeliness": 7
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Title: LeonidaReforge/Leonida\nCommunity-driven continuation of the Leonida project"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 40906.2,
+        "risk": 1019.89
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 1,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 40899.33,
+            "input_tokens": 879,
+            "output_tokens": 190,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1014.63,
+            "input_tokens": 620,
+            "output_tokens": 94,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "github:1469545146",
+      "source": "github",
+      "title": "injectingon5m-alt/pubg-map-hack",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 6,
+        "relevance_reasoning": "The repository is a game cheat for PUBG, offering no relevance to LLM or agent engineering, providing no usable artifact for our domain, and is not a new capability for applied AI.",
+        "relevance_rubric": {
+          "novelty": 2,
+          "technical_relevance": 1,
+          "applicability": 1,
+          "timeliness": 2
+        },
+        "risk_level": "MEDIUM",
+        "risk_category": "SUSPICION",
+        "concerns": [
+          "Potential cheating tool for PUBG"
+        ],
+        "evidence": [
+          "injectingon5m-alt/pubg-map-hack"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "INDICATOR"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 50777.37,
+        "risk": 1022.28
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "MEDIUM",
+          "risk_category": "SUSPICION",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 1,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": true,
+          "lure_score": 1,
+          "lure_reasons": [
+            "cheat/crack vocabulary: hack"
+          ],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 50770.98,
+            "input_tokens": 886,
+            "output_tokens": 132,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1016.95,
+            "input_tokens": 627,
+            "output_tokens": 146,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "github:1469792866",
+      "source": "github",
+      "title": "carllouisepamittan/sketchup-pro-befalor",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 10,
+        "relevance_reasoning": "The repository is a 3D‑modeling tool unrelated to LLM or agent development, offering no new AI capability, limited actionable value for our team, and no time‑sensitive relevance.",
+        "relevance_rubric": {
+          "novelty": 4,
+          "technical_relevance": 3,
+          "applicability": 4,
+          "timeliness": 3
+        },
+        "risk_level": "MEDIUM",
+        "risk_category": "SUSPICION",
+        "concerns": [
+          "Deceptive or malicious artifact indicators."
+        ],
+        "evidence": [
+          "Title: carllouisepamittan/sketchup-pro-befalor",
+          "cheat/crack vocabulary: how-to-install",
+          "names paid software: sketchup",
+          "topic stuffing (20 topics)"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "INDICATOR"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59290.58,
+        "risk": 710.12
+      },
+      "v2": {
+        "relevance_adjustments": [
+          "capped from 14 to 10: lure repository"
+        ],
+        "risk_adjustments": [
+          "rejected 1 ungrounded evidence quote(s)",
+          "concrete suspicion indicators -> SUSPICION"
+        ],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 1,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 3,
+          "lure_reasons": [
+            "cheat/crack vocabulary: how-to-install",
+            "names paid software: sketchup",
+            "topic stuffing (20 topics)"
+          ],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": true
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59285.7,
+            "input_tokens": 947,
+            "output_tokens": 174,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 701.82,
+            "input_tokens": 688,
+            "output_tokens": 99,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "github:1469810970",
+      "source": "github",
+      "title": "HavocSaif/avast-premium-security-kacerin",
+      "gold": {
+        "relevance_score": 5,
+        "risk_level": "MEDIUM",
+        "breaking_changes": false,
+        "risk_category": "SUSPICION"
+      },
+      "predictions": {
+        "relevance_score": 10,
+        "relevance_reasoning": "The repository is a desktop security tool unrelated to LLM or agent development, offering no new AI capability, little actionable code for our stack, and no immediate relevance or urgency for the engineering team.",
+        "relevance_rubric": {
+          "novelty": 3,
+          "technical_relevance": 4,
+          "applicability": 2,
+          "timeliness": 3
+        },
+        "risk_level": "MEDIUM",
+        "risk_category": "SUSPICION",
+        "concerns": [
+          "Deceptive or malicious artifact indicators."
+        ],
+        "evidence": [
+          "Title: HavocSaif/avast-premium-security-kacerin",
+          "Directory listing for the Avast Premium Security Kacerin project.",
+          "language 'html' contradicts native topics (desktop-app, windows-10, windows-11)",
+          "topic stuffing (19 topics)"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "INDICATOR"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58809.96,
+        "risk": 1150.22
+      },
+      "v2": {
+        "relevance_adjustments": [
+          "capped from 12 to 10: lure repository"
+        ],
+        "risk_adjustments": [
+          "rejected 1 ungrounded evidence quote(s)",
+          "concrete suspicion indicators -> SUSPICION"
+        ],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 2,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 2,
+          "lure_reasons": [
+            "language 'html' contradicts native topics (desktop-app, windows-10, windows-11)",
+            "topic stuffing (19 topics)"
+          ],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": true
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 58805.95,
+            "input_tokens": 930,
+            "output_tokens": 134,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1147.95,
+            "input_tokens": 671,
+            "output_tokens": 120,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "github_releases:langchain-ai/langchain:455665338",
+      "source": "github_releases",
+      "title": "langchain-ai/langchain langchain-text-splitters==1.2.0",
+      "gold": {
+        "relevance_score": 40,
+        "risk_level": "MEDIUM",
+        "breaking_changes": true,
+        "risk_category": "COMPATIBILITY"
+      },
+      "predictions": {
+        "relevance_score": 72,
+        "relevance_reasoning": "The 1.2.0 release of LangChain's text-splitters adds incremental updates and dependency fixes, is directly usable for LLM pipelines, is highly relevant to core LLM tooling, and the fresh release warrants immediate adoption.",
+        "relevance_rubric": {
+          "novelty": 8,
+          "technical_relevance": 27,
+          "applicability": 22,
+          "timeliness": 15
+        },
+        "risk_level": "MEDIUM",
+        "risk_category": "COMPATIBILITY",
+        "concerns": [],
+        "evidence": [
+          "chore(text-splitters): bump mistune from 3.3.3 to 3.3.4 in /libs/text-splitters (#42006)",
+          "chore(infra): update vulnerable development dependencies (#41933)",
+          "feat: Remove EOL'd Python 3.10 from text_splitters, model_profiles and standard-tests (#41343)",
+          "build(text-splitters): constrain setuptools to patched releases (#41485)",
+          "revert: patch vulnerable integration dependencies (#41481)",
+          "Explicit compatibility marker detected in the signal."
+        ],
+        "breaking_changes": true,
+        "evidence_strength": "CONFIRMED"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59241.34,
+        "risk": 1465.65
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [
+          "explicit compatibility marker -> COMPATIBILITY / breaking"
+        ],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 5,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": true,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59229.53,
+            "input_tokens": 1234,
+            "output_tokens": 218,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1457.3,
+            "input_tokens": 975,
+            "output_tokens": 247,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "github_releases:langchain-ai/langchain:455668448",
+      "source": "github_releases",
+      "title": "langchain-ai/langchain langchain-tests==1.2.0",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "MEDIUM",
+        "breaking_changes": true,
+        "risk_category": "COMPATIBILITY"
+      },
+      "predictions": {
+        "relevance_score": 70,
+        "relevance_reasoning": "The release is an incremental LangChain update with dependency bumps and Python version cleanup, directly usable for LLM/agent projects and timely for immediate upgrade.",
+        "relevance_rubric": {
+          "novelty": 8,
+          "technical_relevance": 22,
+          "applicability": 23,
+          "timeliness": 17
+        },
+        "risk_level": "MEDIUM",
+        "risk_category": "COMPATIBILITY",
+        "concerns": [],
+        "evidence": [
+          "Explicit compatibility marker detected in the signal."
+        ],
+        "breaking_changes": true,
+        "evidence_strength": "CONFIRMED"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59297.21,
+        "risk": 734.37
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [
+          "explicit compatibility marker -> COMPATIBILITY / breaking"
+        ],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": true,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59282.8,
+            "input_tokens": 1390,
+            "output_tokens": 209,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 721.24,
+            "input_tokens": 1222,
+            "output_tokens": 44,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "github_releases:openai/openai-python:450225202",
+      "source": "github_releases",
+      "title": "openai/openai-python v3.55.1",
+      "gold": {
+        "relevance_score": 25,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 71,
+        "relevance_reasoning": "The v3.55.1 release is a minor incremental update to the official OpenAI Python SDK, directly usable for LLM development, and its recent publication makes upgrading timely.",
+        "relevance_rubric": {
+          "novelty": 7,
+          "technical_relevance": 27,
+          "applicability": 22,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59035.13,
+        "risk": 959.1
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59026.74,
+            "input_tokens": 1276,
+            "output_tokens": 199,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 948.92,
+            "input_tokens": 1017,
+            "output_tokens": 44,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "github_releases:openai/openai-python:451919602",
+      "source": "github_releases",
+      "title": "openai/openai-python v3.56.0",
+      "gold": {
+        "relevance_score": 55,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 72,
+        "relevance_reasoning": "The release adds a new Live model option to the OpenAI Python SDK, an incremental but useful update that developers can immediately adopt in LLM applications.",
+        "relevance_rubric": {
+          "novelty": 8,
+          "technical_relevance": 27,
+          "applicability": 22,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59373.45,
+        "risk": 512.57
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59369.01,
+            "input_tokens": 1032,
+            "output_tokens": 198,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 508.76,
+            "input_tokens": 773,
+            "output_tokens": 44,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "hackernews:42063346",
+      "source": "hackernews",
+      "title": "Show HN: Aide, an open-source AI native IDE",
+      "gold": {
+        "relevance_score": 60,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "SECURITY"
+      },
+      "predictions": {
+        "relevance_score": 80,
+        "relevance_reasoning": "Aide is a fresh open-source VSCode fork tightly integrating LLM agents, making it a notable new capability that is directly usable now and highly relevant for LLM/agent development, with immediate community interest.",
+        "relevance_rubric": {
+          "novelty": 17,
+          "technical_relevance": 26,
+          "applicability": 22,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Show HN: Aide, an open-source AI native IDE",
+          "We are Sandeep and Naresh, the creators of Aide."
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59176.85,
+        "risk": 916.46
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 2,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59168.58,
+            "input_tokens": 967,
+            "output_tokens": 224,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 905.28,
+            "input_tokens": 708,
+            "output_tokens": 150,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "hackernews:45029254",
+      "source": "hackernews",
+      "title": "Show HN: Pantheon-CLI – Open-Source Python Claude Code and Smart Notebook",
+      "gold": {
+        "relevance_score": 60,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "SECURITY"
+      },
+      "predictions": {
+        "relevance_score": 64,
+        "relevance_reasoning": "Pantheon-CLI is a new open-source CLI for Claude code and notebooks, offering a usable tool for on‑device LLM assistance, making it fairly novel and directly applicable, though its impact is incremental and the post is moderately recent.",
+        "relevance_rubric": {
+          "novelty": 10,
+          "technical_relevance": 18,
+          "applicability": 22,
+          "timeliness": 14
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Pantheon-CLI, an fully open-source project",
+          "runs entirely on your machine (or server). No data upload required."
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59124.89,
+        "risk": 1065.4
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 2,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59122.5,
+            "input_tokens": 958,
+            "output_tokens": 199,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1062.18,
+            "input_tokens": 699,
+            "output_tokens": 121,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "hackernews:46031208",
+      "source": "hackernews",
+      "title": "Syd – An offline-first, AI-augmented workstation for blue teams",
+      "gold": {
+        "relevance_score": 55,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 69,
+        "relevance_reasoning": "Syd introduces a novel offline-first workflow that integrates local LLMs with forensic tools, directly relevant to LLM/agent engineering and usable now, though its impact is still emerging.",
+        "relevance_rubric": {
+          "novelty": 14,
+          "technical_relevance": 22,
+          "applicability": 19,
+          "timeliness": 14
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "offline-first forensic workstation",
+          "no data is ever sent to the cloud"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 58482.28,
+        "risk": 745.55
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 2,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 58476.26,
+            "input_tokens": 954,
+            "output_tokens": 244,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 736.16,
+            "input_tokens": 695,
+            "output_tokens": 117,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "hackernews:48125186",
+      "source": "hackernews",
+      "title": "Show HN: Truly Typed – A writing app for the AI era",
+      "gold": {
+        "relevance_score": 30,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 22,
+        "relevance_reasoning": "The app is a niche writing tool that mentions AI‑generated text but offers no concrete library, model, or code useful for LLM engineering; it is a modest incremental idea with limited technical relevance and little immediate actionable value for the team.",
+        "relevance_rubric": {
+          "novelty": 6,
+          "technical_relevance": 5,
+          "applicability": 5,
+          "timeliness": 6
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Show HN: Truly Typed – A writing app for the AI era",
+          "I am building a document writing app which makes it extremely easy to figure out how a document was created."
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59591.58,
+        "risk": 552.47
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 2,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59584.36,
+            "input_tokens": 981,
+            "output_tokens": 151,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 547.59,
+            "input_tokens": 722,
+            "output_tokens": 160,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "huggingface:MiniMaxAI/MiniMax-H3",
+      "source": "huggingface",
+      "title": "HF Model: MiniMaxAI/MiniMax-H3",
+      "gold": {
+        "relevance_score": 65,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 73,
+        "relevance_reasoning": "The MiniMax-H3 model adds a new image-to-video generation capability that is directly usable via Hugging Face pipelines, making it a notable but incremental release with immediate applicability for multimodal LLM projects.",
+        "relevance_rubric": {
+          "novelty": 14,
+          "technical_relevance": 22,
+          "applicability": 22,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Title: HF Model: MiniMaxAI/MiniMax-H3"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 60525.11,
+        "risk": 665.73
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [
+          "rejected 1 ungrounded evidence quote(s)"
+        ],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 1,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 60521.03,
+            "input_tokens": 933,
+            "output_tokens": 192,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 659.72,
+            "input_tokens": 674,
+            "output_tokens": 95,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "huggingface:black-forest-labs/FLUX.1-dev",
+      "source": "huggingface",
+      "title": "HF Model: black-forest-labs/FLUX.1-dev",
+      "gold": {
+        "relevance_score": 45,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 79,
+        "relevance_reasoning": "FLUX.1-dev is a newly released, high‑impact text‑to‑image diffusion model that can be directly used via Hugging Face pipelines, making it immediately applicable, though its focus on image generation places it slightly outside core LLM engineering.",
+        "relevance_rubric": {
+          "novelty": 22,
+          "technical_relevance": 20,
+          "applicability": 22,
+          "timeliness": 15
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59858.26,
+        "risk": 1178.07
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59855.35,
+            "input_tokens": 927,
+            "output_tokens": 243,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1176.09,
+            "input_tokens": 668,
+            "output_tokens": 44,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "huggingface:hexgrad/Kokoro-82M",
+      "source": "huggingface",
+      "title": "HF Model: hexgrad/Kokoro-82M",
+      "gold": {
+        "relevance_score": 60,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 62,
+        "relevance_reasoning": "The Kokoro-82M TTS model is an incremental improvement on existing StyleTTS2, directly usable via Hugging Face pipelines, and its recent arXiv references make it moderately timely for current projects.",
+        "relevance_rubric": {
+          "novelty": 12,
+          "technical_relevance": 14,
+          "applicability": 22,
+          "timeliness": 14
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59026.34,
+        "risk": 1775.81
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59021.12,
+            "input_tokens": 953,
+            "output_tokens": 201,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1771.68,
+            "input_tokens": 694,
+            "output_tokens": 44,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "huggingface:stabilityai/stable-diffusion-xl-base-1.0",
+      "source": "huggingface",
+      "title": "HF Model: stabilityai/stable-diffusion-xl-base-1.0",
+      "gold": {
+        "relevance_score": 40,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 84,
+        "relevance_reasoning": "SDXL is a major new text-to-image model, central to multimodal LLM applications, directly usable via diffusers, and its recent release makes it timely for immediate integration.",
+        "relevance_rubric": {
+          "novelty": 22,
+          "technical_relevance": 24,
+          "applicability": 22,
+          "timeliness": 16
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59331.62,
+        "risk": 1517.99
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 0,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59329.09,
+            "input_tokens": 935,
+            "output_tokens": 199,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1515.07,
+            "input_tokens": 676,
+            "output_tokens": 44,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/210a0843c601",
+      "source": "medium",
+      "title": "RAG vs. Fine-Tuning: The Wrong Question Enterprises Are Asking",
+      "gold": {
+        "relevance_score": 45,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 20,
+        "relevance_reasoning": "The article is a high‑level opinion piece about RAG vs fine‑tuning, offering no new technical capability, code, or actionable artifact; it is recent but primarily conceptual, so it scores low on novelty, relevance, and applicability while being moderately timely.",
+        "relevance_rubric": {
+          "novelty": 4,
+          "technical_relevance": 5,
+          "applicability": 3,
+          "timeliness": 8
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Title: RAG vs. Fine-Tuning: The Wrong Question Enterprises Are Asking"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59234.5,
+        "risk": 2164.59
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 1,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59231.78,
+            "input_tokens": 917,
+            "output_tokens": 154,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 2160.75,
+            "input_tokens": 658,
+            "output_tokens": 99,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/8582041951d7",
+      "source": "medium",
+      "title": "Change One Thing at a Time When an AI Result Goes Wrong",
+      "gold": {
+        "relevance_score": 35,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 22,
+        "relevance_reasoning": "The article offers generic debugging advice, a well-known habit with no new capability, low technical depth for LLM engineering, limited actionable artifacts, and while recent, it does not demand immediate action.",
+        "relevance_rubric": {
+          "novelty": 4,
+          "technical_relevance": 5,
+          "applicability": 5,
+          "timeliness": 8
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Title: Change One Thing at a Time When an AI Result Goes Wrong"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59704.21,
+        "risk": 2367.2
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 1,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59701.34,
+            "input_tokens": 926,
+            "output_tokens": 146,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 2360.94,
+            "input_tokens": 667,
+            "output_tokens": 99,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/a9db7d85f765",
+      "source": "medium",
+      "title": "I Used to Catch AI-Written Text. Now I Catch AI Getting It Wrong.",
+      "gold": {
+        "relevance_score": 35,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 31,
+        "relevance_reasoning": "The article discusses a 2023 paper on AI‑generated text detection, which is not a new capability, offers limited actionable code or tools for immediate use, is moderately relevant to applied LLM work, and does not present a time‑sensitive development.",
+        "relevance_rubric": {
+          "novelty": 5,
+          "technical_relevance": 15,
+          "applicability": 6,
+          "timeliness": 5
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Title: I Used to Catch AI-Written Text. Now I Catch AI Getting It Wrong."
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 57821.78,
+        "risk": 3367.98
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 1,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 57817.75,
+            "input_tokens": 945,
+            "output_tokens": 182,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 3365.18,
+            "input_tokens": 686,
+            "output_tokens": 104,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "signal_id": "medium:https://medium.com/p/ab8f73ba9a9a",
+      "source": "medium",
+      "title": "Beyond Manual Redaction: How Automated Aadhaar Masking Strengthens Business Document Security",
+      "gold": {
+        "relevance_score": 25,
+        "risk_level": "LOW",
+        "breaking_changes": false,
+        "risk_category": "NONE"
+      },
+      "predictions": {
+        "relevance_score": 22,
+        "relevance_reasoning": "The article discusses automated redaction of Aadhaar data, which is a niche business security topic with little relevance to LLM or agent engineering, offers no actionable code or library, is not a novel technical advancement, and while recent, does not demand immediate action for the engineering team.",
+        "relevance_rubric": {
+          "novelty": 4,
+          "technical_relevance": 5,
+          "applicability": 5,
+          "timeliness": 8
+        },
+        "risk_level": "LOW",
+        "risk_category": "NONE",
+        "concerns": [],
+        "evidence": [
+          "Title: Beyond Manual Redaction: How Automated Aadhaar Masking Strengthens Business Document Security"
+        ],
+        "breaking_changes": false,
+        "evidence_strength": "NONE"
+      },
+      "fallback": {
+        "relevance": false,
+        "risk": false,
+        "relevance_reason": null,
+        "risk_reason": null
+      },
+      "latency_ms": {
+        "relevance": 59034.29,
+        "risk": 1852.73
+      },
+      "v2": {
+        "relevance_adjustments": [],
+        "risk_adjustments": [],
+        "llm_view": {
+          "risk_level": "LOW",
+          "risk_category": "NONE",
+          "breaking_changes": false
+        },
+        "grounding": {
+          "exact": 0,
+          "fuzzy": 1,
+          "ungrounded": 0
+        },
+        "rejected_evidence": [],
+        "profile": {
+          "explicit_breaking_marker": false,
+          "security_marker": false,
+          "keyword_suspicion_marker": false,
+          "lure_score": 0,
+          "lure_reasons": [],
+          "injection_detected": false,
+          "injection_matches": [],
+          "is_lure": false
+        },
+        "usage": {
+          "relevance": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 59030.64,
+            "input_tokens": 930,
+            "output_tokens": 154,
+            "cost_usd": 0.0,
+            "errors": []
+          },
+          "risk": {
+            "attempts": 1,
+            "cache_hit": false,
+            "latency_ms": 1848.27,
+            "input_tokens": 671,
+            "output_tokens": 105,
+            "cost_usd": 0.0,
+            "errors": []
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "dataset_version": "v4-reviewed-risk-taxonomy",
+  "splits": [
+    {
+      "split": "dev",
+      "record_count": 48,
+      "risk_level_counts": {
+        "LOW": 36,
+        "MEDIUM": 11,
+        "HIGH": 1
+      },
+      "risk_category_counts": {
+        "NONE": 35,
+        "SUSPICION": 7,
+        "SECURITY": 4,
+        "COMPATIBILITY": 2
+      },
+      "breaking_changes_true": 2,
+      "warnings": [
+        {
+          "signal_id": "hackernews:42174829",
+          "type": "LOW_SECURITY"
+        },
+        {
+          "signal_id": "hackernews:44649115",
+          "type": "LOW_SECURITY"
+        },
+        {
+          "signal_id": "hackernews:48819808",
+          "type": "LOW_SECURITY"
+        },
+        {
+          "signal_id": "huggingface:deepseek-ai/DeepSeek-R1",
+          "type": "ELEVATED_NONE"
+        },
+        {
+          "signal_id": "huggingface:moonshotai/Kimi-K3",
+          "type": "ELEVATED_NONE"
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "record_count": 24,
+      "risk_level_counts": {
+        "LOW": 18,
+        "MEDIUM": 6
+      },
+      "risk_category_counts": {
+        "NONE": 17,
+        "SUSPICION": 3,
+        "COMPATIBILITY": 2,
+        "SECURITY": 2
+      },
+      "breaking_changes_true": 2,
+      "warnings": [
+        {
+          "signal_id": "github:1469445489",
+          "type": "ELEVATED_NONE"
+        },
+        {
+          "signal_id": "hackernews:42063346",
+          "type": "LOW_SECURITY"
+        },
+        {
+          "signal_id": "hackernews:45029254",
+          "type": "LOW_SECURITY"
+        }
+      ]
+    }
+  ]
+}

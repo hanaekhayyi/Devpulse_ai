@@ -1,175 +1,214 @@
 """
-DevPulseAI — Multi-Agent Signal Intelligence Pipeline
+SignalGuard (DevPulseAI enhanced) — Multi-Agent Signal Intelligence Pipeline
 
-Demonstrates a production-style multi-agent workflow that aggregates
-technical signals from multiple sources, scores them for relevance,
-assesses risks, and synthesizes an actionable intelligence digest.
-
-Architecture:
-    Adapters (fetch) → SignalCollector (normalize) → RelevanceAgent (score)
-    → RiskAgent (assess) → SynthesisAgent (digest)
-
-Design Decisions:
-    - Signal collection is a utility, not an agent (deterministic work).
-    - Agents are used only where reasoning is required.
-    - OpenRouter is used through an OpenAI-compatible API endpoint.
-    - Models are chosen by role: fast for classification, strong for synthesis.
+Versions (all kept side by side for comparison):
+    v0    original DevPulseAI agents, sequential pipeline
+    v1.1  rubric relevance + evidence-based risk with deterministic validation
+    v2    Agno Workflow: structured outputs, reliability layer, injection guard,
+          evidence grounding, risk triage (Router/Condition), verified LLM synthesis
 
 Usage:
-    Set OPENROUTER_API_KEY in the .env file.
-    python main.py
+    python main.py                                   # v2, live sources
+    python main.py --agent-version v0                # original behaviour
+    python main.py --frozen --split dev              # reproducible run on the frozen dataset
+    python main.py --no-llm-synthesis --json-out digest.json
 
-    Without API key: agents fall back to heuristic scoring.
+LLM provider and models are configured in .env (see .env.example and config.py).
 """
 
-from typing import List, Dict, Any, Optional
+from __future__ import annotations
 
-from config import HIGH_RELEVANCE_THRESHOLD, OPENROUTER_API_KEY
+import argparse
+import json
+import sys
+import time
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-# Reduced default signal count for faster demo execution
-DEFAULT_SIGNAL_LIMIT = 5
+from config import LLM_API_KEY, LLM_PROVIDER, MODEL_RELEVANCE, MODEL_RISK, MODEL_SYNTHESIS
 
-# Import adapters
-from adapters.github import fetch_github_trending
 from adapters.arxiv import fetch_arxiv_papers
+from adapters.github import fetch_github_trending
+from adapters.github_releases import fetch_github_releases
 from adapters.hackernews import fetch_hackernews_stories
-from adapters.medium import fetch_medium_blogs
 from adapters.huggingface import fetch_huggingface_models
+from adapters.medium import fetch_medium_blogs
+from agents import RelevanceAgent, RiskAgent, SignalCollector, SynthesisAgent
 
-# Import pipeline components
-from agents import (
-    SignalCollector,  # Utility — no LLM
-    RelevanceAgent,   # Agent — gpt-4.1-mini
-    RiskAgent,        # Agent — gpt-4.1-mini
-    SynthesisAgent,   # Agent — gpt-4.1
-)
+# Public helpers reused by the web app
+DEFAULT_SIGNAL_LIMIT = 5
+FROZEN_SIGNALS = Path(__file__).resolve().parent / "data" / "benchmark" / "signals_frozen.json"
 
 
 def collect_signals(limit: Optional[int] = None) -> List[Dict[str, Any]]:
-    """
-    Collect signals from all configured sources.
-
-    This is pure data aggregation — no LLM involved.
-    """
+    """Collect raw signals from every source (pure data aggregation, no LLM)."""
     fetch_limit = limit if limit is not None else DEFAULT_SIGNAL_LIMIT
-    print(f"\n📡 [1/5] Collecting Signals (limit: {fetch_limit} per source)...")
-
-    signals = []
-
-    print("  → Fetching GitHub trending repos...")
-    signals.extend(fetch_github_trending(limit=fetch_limit))
-
-    print("  → Fetching ArXiv papers...")
-    signals.extend(fetch_arxiv_papers(limit=fetch_limit))
-
-    print("  → Fetching HackerNews stories...")
-    signals.extend(fetch_hackernews_stories(limit=fetch_limit))
-
-    print("  → Fetching Medium blogs...")
-    signals.extend(fetch_medium_blogs(limit=min(fetch_limit, 3)))
-
-    print("  → Fetching HuggingFace models...")
-    signals.extend(fetch_huggingface_models(limit=fetch_limit))
-
+    print(f"\n📡 Collecting signals (limit: {fetch_limit} per source)...")
+    sources = [
+        ("GitHub trending repos", lambda: fetch_github_trending(limit=fetch_limit)),
+        ("ArXiv papers", lambda: fetch_arxiv_papers(limit=fetch_limit)),
+        ("HackerNews stories", lambda: fetch_hackernews_stories(limit=fetch_limit)),
+        ("Medium blogs", lambda: fetch_medium_blogs(limit=min(fetch_limit, 3))),
+        ("HuggingFace models", lambda: fetch_huggingface_models(limit=fetch_limit)),
+        ("GitHub releases", lambda: fetch_github_releases(limit=fetch_limit)),
+    ]
+    signals: List[Dict[str, Any]] = []
+    for label, fetch in sources:
+        try:
+            batch = fetch()
+        except Exception as exc:  # noqa: BLE001 — one failing source must not stop the pipeline
+            print(f"  ⚠️  {label}: {exc}")
+            continue
+        print(f"  → {label}: {len(batch)}")
+        signals.extend(batch)
     print(f"  ✓ Collected {len(signals)} raw signals")
     return signals
 
 
-def run_pipeline():
-    """
-    Execute the full signal intelligence pipeline.
+# --------------------------------------------------------------------------- legacy pipelines (v0 / v1.1)
 
-    Pipeline stages:
-    1. Signal Collection — Aggregate from sources (utility, no LLM)
-    2. Normalization    — Deduplicate and normalize (utility, no LLM)
-    3. Relevance Score  — Rate signals 0-100 (agent, gpt-4.1-mini)
-    4. Risk Assessment  — Identify risks (agent, gpt-4.1-mini)
-    5. Synthesis        — Produce digest (agent, gpt-4.1)
-    """
-    print("=" * 60)
-    print("🧠 DevPulseAI — Signal Intelligence Pipeline")
-    print("=" * 60)
+def run_legacy(version: str, raw_signals: List[Dict[str, Any]]) -> Dict[str, Any]:
+    if version == "v1.1":
+        from agents.relevance_agent_v1 import RelevanceAgentV1
+        from agents.risk_agent_v1_1 import RiskAgentV1_1
 
-    # Check for API key
-    if not OPENROUTER_API_KEY:
-        print("\n⚠️  Warning: OPENROUTER_API_KEY not set.")
-        print("   Agents will use fallback heuristics.\n")
+        relevance, risk = RelevanceAgentV1(), RiskAgentV1_1()
+    else:
+        relevance, risk = RelevanceAgent(), RiskAgent()
 
-    # Stage 1: Collect raw signals from adapters
-    raw_signals = collect_signals()
-
-    # Stage 2: Normalize and deduplicate (utility — no LLM)
     collector = SignalCollector()
-    print("\n🔄 [2/5] Normalizing Signals...")
     normalized = collector.collect(raw_signals)
-    print(f"  ✓ {collector.summarize_collection(normalized)}")
-
-    # Stage 3: Score for relevance (agent — K2 Horizon)
-    relevance = RelevanceAgent()
-    print("\n📊 [3/5] Scoring Relevance...")
+    print(f"\n🔄 {collector.summarize_collection(normalized)}")
+    print("\n📊 Scoring relevance...")
     scored = relevance.score_batch(normalized)
-    fallbacks = sum(
-        1
-        for signal in scored
-        if signal.get("relevance", {}).get("used_fallback", False)
-    )
-    print(f"  ✓ {fallbacks}/{len(scored)} signals processed with fallback")
-    high_relevance = sum(
-        1
-        for s in scored
-        if s.get("relevance", {}).get("score", 0) >= HIGH_RELEVANCE_THRESHOLD
-    )
-    print(f"  ✓ {high_relevance}/{len(scored)} signals rated high-relevance")
-
-    # Stage 4: Assess risks (agent — K2 Horizon)
-    risk = RiskAgent()
-    print("\n⚠️  [4/5] Assessing Risks...")
+    print("⚠️  Assessing risks...")
     assessed = risk.assess_batch(scored)
-    risk_fallbacks = sum(
-    1
-    for signal in assessed
-    if signal.get("risk", {}).get("used_fallback", False)
+    print("📋 Generating digest...")
+    digest = SynthesisAgent().synthesize(assessed)
+    digest["synthesis"] = {"mode": "deterministic (v0 SynthesisAgent)"}
+    fallbacks = sum(bool(s.get("relevance", {}).get("used_fallback")) + bool(s.get("risk", {}).get("used_fallback"))
+                    for s in assessed)
+    return {"digest": digest, "fallbacks": fallbacks, "assessed": assessed}
+
+
+# --------------------------------------------------------------------------- v2 (Agno Workflow)
+
+def run_v2(args: argparse.Namespace) -> Dict[str, Any]:
+    from agents.v2 import RelevanceAgentV2, ResponseCache, RiskAgentV2
+    from agents.v2.synthesis import SynthesisAgentV2
+    from pipeline.workflow import build_workflow, run_workflow
+
+    cache = ResponseCache()
+    workflow = build_workflow(
+        RelevanceAgentV2(cache=cache),
+        RiskAgentV2(cache=cache),
+        SynthesisAgentV2(cache=cache),
+        collect_live=collect_signals,
     )
+    options: Dict[str, Any] = {
+        "llm_synthesis": not args.no_llm_synthesis,
+        "concurrency": args.concurrency,
+        "limit_per_source": args.limit,
+    }
+    if args.frozen:
+        options.update(frozen_path=str(FROZEN_SIGNALS), split=args.split, max_signals=args.max_signals)
+    return run_workflow(workflow, **options)
 
-    print(f"  ✓ {risk_fallbacks}/{len(assessed)} risk assessments used fallback")
-    
-    critical = sum(
-        1
-        for s in assessed
-        if s.get("risk", {}).get("risk_level") in ["HIGH", "CRITICAL"]
-    )
-    print(f"  ✓ {critical}/{len(assessed)} signals with elevated risk")
 
-    # Stage 5: Synthesize digest (agent — K2 Horizon)
-    synthesis = SynthesisAgent()
-    print("\n📋 [5/5] Generating Intelligence Digest...")
-    digest = synthesis.synthesize(assessed)
+# --------------------------------------------------------------------------- output
 
-    # Output results
-    print("\n" + "=" * 60)
-    print("📄 INTELLIGENCE DIGEST")
-    print("=" * 60)
-    print(f"\n🕐 Generated: {digest['generated_at']}")
-    print(f"📦 Total Signals: {digest['total_signals']}")
-    print(f"\n📝 Summary: {digest['executive_summary']}")
+def print_digest(version: str, result: Dict[str, Any], elapsed: float) -> None:
+    digest = result["digest"]
+    print("\n" + "=" * 64)
+    print(f"📄 INTELLIGENCE DIGEST — {version}")
+    print("=" * 64)
+    print(f"📦 Signals: {digest.get('total_signals')} | fallbacks: {result.get('fallbacks', 0)} | "
+          f"time: {elapsed:.1f}s")
+    triage = result.get("triage")
+    if triage:
+        total = len(triage["risk_llm"]) + len(triage["risk_fast_path"])
+        print(f"🔀 Risk triage: {len(triage['risk_llm'])}/{total} signals sent to the LLM, "
+              f"{len(triage['risk_fast_path'])} handled by the deterministic fast path")
+    synthesis = digest.get("synthesis", {})
+    print(f"🧠 Synthesis: {synthesis.get('mode')}"
+          + (f" (fallback: {synthesis.get('fallback_reason')})" if synthesis.get("used_fallback") else "")
+          + (f" | rejected ids: {synthesis['rejected_signal_ids']}" if synthesis.get("rejected_signal_ids") else ""))
+    print(f"\n📝 {digest.get('executive_summary')}")
 
-    print("\n🎯 Top Priority Signals:")
-    for i, signal in enumerate(digest.get("priority_signals", [])[:3], 1):
-        score = signal.get("relevance", {}).get("score", "?")
-        risk_level = signal.get("risk", {}).get("risk_level", "?")
-        print(f"   {i}. [{signal['source']}] {signal['title'][:50]}...")
-        print(f"      Relevance: {score} | Risk: {risk_level}")
+    print("\n🎯 Top priority signals:")
+    for i, s in enumerate(digest.get("priority_signals", [])[:5], 1):
+        risk = s.get("risk", {})
+        print(f"   {i}. [{s.get('source')}] {str(s.get('title'))[:60]}")
+        print(f"      relevance {s.get('relevance', {}).get('score', '?')} | risk {risk.get('risk_level', '?')}"
+              f"/{risk.get('risk_category', '-')}" + (" | BREAKING" if risk.get("breaking_changes") else ""))
+
+    if digest.get("key_signals") and isinstance(digest["key_signals"][0], dict):
+        print("\n🔑 Why it matters:")
+        for item in digest["key_signals"][:5]:
+            print(f"   • {str(item.get('title'))[:55]}: {item.get('why_it_matters')}")
 
     print("\n💡 Recommendations:")
     for rec in digest.get("recommendations", []):
-        print(f"   • {rec}")
+        if isinstance(rec, dict):
+            ids = rec.get("signal_ids") or []
+            print(f"   • {rec['action']}" + (f"  [{len(ids)} signal(s)]" if ids else ""))
+        else:
+            print(f"   • {rec}")
+    print("=" * 64)
 
-    print("\n" + "=" * 60)
-    print("✅ Pipeline completed successfully!")
-    print("=" * 60)
 
-    return digest
+def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="SignalGuard signal intelligence pipeline")
+    parser.add_argument("--agent-version", choices=("v0", "v1.1", "v2"), default="v2")
+    parser.add_argument("--limit", type=int, default=DEFAULT_SIGNAL_LIMIT, help="Live mode: signals per source.")
+    parser.add_argument("--frozen", action="store_true", help="Use the frozen dataset instead of live sources.")
+    parser.add_argument("--split", choices=("dev", "test"), default=None, help="Frozen mode: restrict to a split.")
+    parser.add_argument("--max-signals", type=int, default=None, help="Frozen mode: cap the number of signals.")
+    parser.add_argument("--no-llm-synthesis", action="store_true", help="v2: Python-only digest.")
+    parser.add_argument("--concurrency", type=int, default=4)
+    parser.add_argument("--json-out", type=Path, default=None)
+    return parser.parse_args(argv)
+
+
+def run_pipeline(argv: Optional[List[str]] = None) -> Dict[str, Any]:
+    args = parse_args(argv)
+    print("=" * 64)
+    print(f"🛡️  SignalGuard — {args.agent_version} | provider: {LLM_PROVIDER}")
+    print(f"   models: relevance={MODEL_RELEVANCE} | risk={MODEL_RISK} | synthesis={MODEL_SYNTHESIS}")
+    print("=" * 64)
+    if not LLM_API_KEY:
+        print("⚠️  No API key for the selected provider: agents will use their fallbacks.")
+
+    started = time.perf_counter()
+    if args.agent_version == "v2":
+        result = run_v2(args)
+    else:
+        if args.frozen:
+            from pipeline.workflow import load_frozen
+
+            raw = load_frozen(FROZEN_SIGNALS, args.split, args.max_signals)
+        else:
+            raw = collect_signals(args.limit)
+        result = run_legacy(args.agent_version, raw)
+    elapsed = time.perf_counter() - started
+    print_digest(args.agent_version, result, elapsed)
+
+    if args.json_out:
+        args.json_out.write_text(json.dumps(result["digest"], ensure_ascii=False, indent=2, default=str),
+                                 encoding="utf-8")
+        print(f"💾 Digest written to {args.json_out}")
+    return result["digest"]
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    try:
+        run_pipeline()
+    except KeyboardInterrupt:
+        sys.exit(130)
+    except BaseException as exc:  # QuotaExhausted derives from BaseException on purpose
+        if type(exc).__name__ != "QuotaExhausted":
+            raise
+        print(f"\n⛔ Provider quota exhausted: {exc}\n"
+              "   Retry later, or select another model for this run, e.g. LLM_MODEL_RELEVANCE=<model>.",
+              file=sys.stderr)
+        sys.exit(3)

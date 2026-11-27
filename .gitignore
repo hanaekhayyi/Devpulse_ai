@@ -1,6 +1,18 @@
-# Python bytecode
+# Python
 __pycache__/
 *.pyc
 *.pyo
+.venv/
+
+# Secrets (copy .env.example to .env)
 .env
-config.py
+
+# Local caches and runtime output
+.cache/
+results/app_runs/
+results/**/*.partial.jsonl
+results/**/run_log.txt
+*.log
+
+# Local editor/agent settings
+.claude/
