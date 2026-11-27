@@ -2,11 +2,23 @@
 
 [![tests](https://github.com/hanaekhayyi/Devpulse_ai/actions/workflows/tests.yml/badge.svg)](https://github.com/hanaekhayyi/Devpulse_ai/actions/workflows/tests.yml)
 
-**SignalGuard** est une version améliorée et mesurée de [DevPulseAI](https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/devpulse_ai), un pipeline multi-agents (Agno) qui collecte l'actualité technique (GitHub, GitHub Releases, ArXiv, Hacker News, Medium, Hugging Face), évalue la **pertinence** de chaque signal, détecte les **risques** (sécurité, compatibilité, dépôts suspects) et produit un **digest** de recommandations.
+**SignalGuard** est une version améliorée et mesurée de **DevPulseAI**, un pipeline multi-agents (Agno) qui collecte l'actualité technique (GitHub, GitHub Releases, ArXiv, Hacker News, Medium, Hugging Face), évalue la **pertinence** de chaque signal, détecte les **risques** (sécurité, compatibilité, dépôts suspects) et produit un **digest** de recommandations.
 
 L'objectif n'était pas seulement d'ajouter des fonctionnalités, mais de **prouver chaque amélioration par une mesure** : jeu de données figé, annotations de référence, benchmark reproductible, comparaison avant/après sur un jeu de test tenu à l'écart.
 
 Tout tourne sur des **API LLM gratuites** (Groq par défaut).
+
+## Projet d'origine
+
+| | |
+|---|---|
+| **Projet de départ** | DevPulseAI |
+| **Source** | [awesome-llm-apps / advanced_ai_agents / multi_agent_apps / devpulse_ai](https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/devpulse_ai) |
+| **Auteur du dépôt d'origine** | [Shubham Saboo](https://github.com/Shubhamsaboo) |
+| **Ce qui est conservé** | Les collecteurs de sources et les agents d'origine, inchangés, qui servent de référence « v0 » dans toutes les comparaisons |
+| **Ce qui est ajouté** | Tout le reste : agents v2, workflow Agno, défenses, benchmark, application web, tests |
+
+Le premier commit de ce dépôt correspond au code d'origine, avant toute amélioration : la différence avec la version actuelle montre exactement ce qui a été modifié.
 
 ---
 

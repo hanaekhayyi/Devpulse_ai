@@ -16,3 +16,8 @@ results/**/run_log.txt
 
 # Local editor/agent settings
 .claude/
+
+# Local reports and presentation material (never published)
+*.pdf
+*.docx
+*.pptx
