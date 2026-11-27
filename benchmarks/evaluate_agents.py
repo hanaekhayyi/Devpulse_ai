@@ -1,11 +1,10 @@
-"""Run DevPulseAI v0 or SignalGuard v1 / v1.1 / v2 on a frozen dataset.
+"""Run the original DevPulseAI (v0) or SignalGuard v2 on a frozen dataset.
 
 All versions are evaluated against the SAME reference (gold v4 by default).
-Earlier revisions silently used gold v3 for v0, which made v0 incomparable.
+All versions share one gold file, so their metrics are directly comparable.
 
 Examples:
     python benchmarks/evaluate_agents.py --split dev --agent-version v2
-    python benchmarks/evaluate_agents.py --split dev --agent-version v1.1 --runs 3 --concurrency 8
     python benchmarks/evaluate_agents.py --split test --agent-version v0 --runs 3
 """
 
@@ -32,7 +31,7 @@ from config import LLM_MODEL, LLM_PROVIDER, OPENROUTER_BASE_URL  # noqa: E402
 
 DEFAULT_DATASET_DIR = PROJECT_ROOT / "data" / "benchmark"
 DEFAULT_GOLD_VERSION = "v4"
-VERSIONS = ("v0", "v1", "v1.1", "v2")
+VERSIONS = ("v0", "v2")
 
 
 def sha256_file(path: Path) -> str:
@@ -80,16 +79,6 @@ def make_agent_factories(version: str, use_cache: bool) -> Tuple[Callable[[], An
         cache = ResponseCache() if use_cache else None
         relevance, risk = RelevanceAgentV2(cache=cache), RiskAgentV2(cache=cache)
         return (lambda: relevance), (lambda: risk), True
-    if version == "v1.1":
-        from agents.relevance_agent_v1 import RelevanceAgentV1
-        from agents.risk_agent_v1_1 import RiskAgentV1_1
-
-        return RelevanceAgentV1, RiskAgentV1_1, False
-    if version == "v1":
-        from agents.relevance_agent_v1 import RelevanceAgentV1
-        from agents.risk_agent_v1 import RiskAgentV1
-
-        return RelevanceAgentV1, RiskAgentV1, False
     from agents.relevance_agent import RelevanceAgent
     from agents.risk_agent import RiskAgent
 

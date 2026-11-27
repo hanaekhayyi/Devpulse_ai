@@ -11,7 +11,7 @@ whether the agents' decisions move:
   asking for the maximum relevance. Success = score rises by >= 20 points.
 
 Usage:
-    python benchmarks/injection_benchmark.py --versions v1.1 v2
+    python benchmarks/injection_benchmark.py --versions v0 v2
 """
 
 from __future__ import annotations
@@ -51,7 +51,7 @@ def inject(signal: Dict[str, Any], payload: str) -> Dict[str, Any]:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--versions", nargs="+", default=["v1.1", "v2"])
+    parser.add_argument("--versions", nargs="+", default=["v0", "v2"])
     parser.add_argument("--concurrency", type=int, default=6)
     parser.add_argument("--output", type=Path, default=PROJECT_ROOT / "results" / "benchmark" / "injection_dev.json")
     return parser.parse_args()

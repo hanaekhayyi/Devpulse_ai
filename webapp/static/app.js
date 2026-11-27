@@ -55,7 +55,7 @@
   const fmt = (v, d = 3) => (v === null || v === undefined || Number.isNaN(v) ? "—" : Number(v).toFixed(d));
   const pct = (v, d = 0) => (v === null || v === undefined ? "—" : `${(v * 100).toFixed(d)} %`);
   const SOURCE = { github: "GitHub", github_releases: "Releases", arxiv: "arXiv", hackernews: "Hacker News", medium: "Medium", huggingface: "Hugging Face" };
-  const VCOLOR = { v0: "var(--v0)", "v1.1": "var(--v11)", v2: "var(--v2)" };
+  const VCOLOR = { v0: "var(--v0)", v2: "var(--v2)" };
   const state = { overview: null, bench: null, signals: null, run: null, poll: null };
 
   const riskBadge = (r) => (r && r.risk_level ? `<span class="badge ${esc(r.risk_level)}">${esc(r.risk_level)}</span>` : '<span class="faint">—</span>');
@@ -190,7 +190,7 @@
     const a0 = get("test", "v0", "risk.accuracy"), a2 = get("test", "v2", "risk.accuracy");
     const r0 = get("test", "v0", "risk.medium_recall"), r2 = get("test", "v2", "risk.medium_recall");
     const m0 = get("dev", "v0", "relevance.mae"), m2 = get("dev", "v2", "relevance.mae");
-    const i1 = inj["v1.1"] ? inj["v1.1"].risky_signals_predicted_low_under_attack : null;
+    const i1 = inj.v0 ? inj.v0.risky_signals_predicted_low_under_attack : null;
     const i2 = inj.v2 ? inj.v2.risky_signals_predicted_low_under_attack : null;
     const d = (a, b2, k = 1, digits = 3) => (a && b2 ? `${b2.mean - a.mean >= 0 ? "+" : ""}${((b2.mean - a.mean) * k).toFixed(digits)}` : "");
 
@@ -227,7 +227,7 @@
       <div class="grid g4">
         ${kpi("target", "Accuracy du risque · TEST", fmt(a2 && a2.mean), a0 && fmt(a0.mean), d(a0, a2), true, "v0")}
         ${kpi("alert", "Rappel MEDIUM · TEST", fmt(r2 && r2.mean), r0 && fmt(r0.mean), d(r0, r2), true, "v0")}
-        ${kpi("lock", "Risques masqués par injection", pct(i2), i1 !== null ? pct(i1) : null, i1 !== null && i2 !== null ? `${((i2 - i1) * 100).toFixed(0)} pts` : "", true, "v1.1")}
+        ${kpi("lock", "Risques masqués par injection", pct(i2), i1 !== null ? pct(i1) : null, i1 !== null && i2 !== null ? `${((i2 - i1) * 100).toFixed(0)} pts` : "", true, "v0")}
         ${kpi("trend", "Erreur de pertinence · DEV", fmt(m2 && m2.mean, 1), m0 && fmt(m0.mean, 1), d(m0, m2, 1, 1), true, "v0 · MAE")}
       </div>
 
@@ -262,7 +262,7 @@
         <div class="panel"><div class="panel-head"><div><h3>Paramètres</h3><div class="sub">Version, données et modèle</div></div></div>
           <div class="panel-body">
             <div class="field"><label>Version</label>
-              <div class="seg" id="f-version"><button data-v="v2" class="on">v2 · Workflow</button><button data-v="v1.1">v1.1</button><button data-v="v0">v0</button></div></div>
+              <div class="seg" id="f-version"><button data-v="v2" class="on">v2 · Workflow</button><button data-v="v0">v0</button></div></div>
             <div class="field"><label for="f-mode">Source des signaux</label>
               <select class="input" id="f-mode"><option value="frozen">Dataset figé (reproductible)</option><option value="live">Sources en direct</option></select></div>
             <div class="field" id="row-split"><label for="f-split">Sous-ensemble</label>
@@ -399,7 +399,7 @@
        ${golds.length > 1 ? `<div class="seg" id="b-gold">${golds.map((g) => `<button data-v="${g}" class="${g === gold ? "on" : ""}">Référence ${g}</button>`).join("")}</div>` : ""}`);
     app.innerHTML = `
       <div class="toolbar" style="justify-content:space-between;margin-bottom:14px">
-        <div class="legend"><span><i style="background:var(--v0)"></i>v0 · original</span><span><i style="background:var(--v11)"></i>v1.1</span><span><i style="background:var(--v2)"></i>v2 · SignalGuard</span></div></div>
+        <div class="legend"><span><i style="background:var(--v0)"></i>v0 · original</span><span><i style="background:var(--v2)"></i>v2 · SignalGuard</span></div></div>
       <div id="b-notes"></div>
       <div class="grid g4" id="b-grid"></div>
       <div class="section"><div class="section-head"><div><h2>Robustesse aux injections de prompt</h2><p>Des consignes malveillantes sont ajoutées au texte de vrais signaux du DEV.</p></div></div>
@@ -411,7 +411,7 @@
       if (summaries.some((s) => s.runs < 3)) notes.push("Les écarts inférieurs à 0,05 restent dans le bruit d'un LLM et ne sont pas significatifs.");
       $("#b-notes").innerHTML = notes.map((n) => `<p class="note">${icon("info", "sm")}<span>${esc(n)}</span></p>`).join("");
       $("#b-grid").innerHTML = METRICS.map(([key, label, max, lower, digits]) => {
-        const rows = ["v0", "v1.1", "v2"].map((v) => {
+        const rows = ["v0", "v2"].map((v) => {
           const s = summaries.find((x) => x.version === v), m = metric(s, key);
           return { label: s ? s.label : v, mean: m ? m.mean : null, std: m ? m.std : 0, n: m ? m.n : 0, color: VCOLOR[v] };
         });

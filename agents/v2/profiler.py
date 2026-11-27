@@ -3,7 +3,7 @@
 The profile is computed once per signal, without any LLM call, and gives the
 agents hard facts that a model tends to miss or to hallucinate:
 
-- explicit compatibility markers (reused from v1.1);
+- explicit compatibility markers;
 - explicit security markers;
 - prompt-injection findings (see ``guards``);
 - a GitHub "lure repository" score. Malware/cheat lure campaigns on GitHub
@@ -18,8 +18,31 @@ import re
 from dataclasses import asdict, dataclass, field
 from typing import Any, Dict, List
 
-from agents.risk_agent_v1_1 import SUSPICION_PATTERN, _has_explicit_breaking_marker
 from agents.v2.guards import neutralise
+
+# Explicit compatibility and suspicion markers (deterministic, no LLM).
+BREAKING_PATTERN = re.compile(
+    r"\b(?:breaking(?: change)?|backward[- ]incompatible|remove(?:d|s)?\s+[^.\n]{0,80}\b(?:support|python|api|endpoint)|"
+    r"drop(?:ped|s)?\s+[^.\n]{0,80}\b(?:support|python|api|endpoint)|eol(?:['’]?d)?\s+python|"
+    r"end[- ]of[- ]life|migration required|unsupported\s+python)\b",
+    re.IGNORECASE,
+)
+SUSPICION_PATTERN = re.compile(
+    r"\b(?:hack|cheat|malware|crack|executor|keygen|sniping|map[- ]hack|fake antivirus)\b",
+    re.IGNORECASE,
+)
+
+
+def has_explicit_breaking_marker(text: str) -> bool:
+    """Detect a positive compatibility marker without letting an unrelated negation cancel it."""
+    for match in BREAKING_PATTERN.finditer(text):
+        matched = match.group(0).lower()
+        prefix = text[max(0, match.start() - 32):match.start()].lower()
+        if matched.startswith("breaking") and re.search(r"\b(?:no|without)\s*$", prefix):
+            continue
+        return True
+    return False
+
 
 LURE_LEXICON = re.compile(
     r"\b(?:mod[- ]?menu|executor|cheats?|hacks?|aimbot|wallhack|esp|injector|spoofer|unlocker|"
@@ -140,7 +163,7 @@ def profile_signal(signal: Dict[str, Any]) -> SignalProfile:
     lure_score, lure_reasons = _lure_analysis(signal)
     clean = neutralise(description).cleaned_text
     return SignalProfile(
-        explicit_breaking_marker=_has_explicit_breaking_marker(text),
+        explicit_breaking_marker=has_explicit_breaking_marker(text),
         security_marker=bool(SECURITY_PATTERN.search(text)),
         keyword_suspicion_marker=bool(SUSPICION_PATTERN.search(text)),
         lure_score=lure_score,

@@ -1,9 +1,8 @@
 """
 SignalGuard (DevPulseAI enhanced) — Multi-Agent Signal Intelligence Pipeline
 
-Versions (all kept side by side for comparison):
-    v0    original DevPulseAI agents, sequential pipeline
-    v1.1  rubric relevance + evidence-based risk with deterministic validation
+Versions:
+    v0    original DevPulseAI agents, sequential pipeline (kept as the comparison baseline)
     v2    Agno Workflow: structured outputs, reliability layer, injection guard,
           evidence grounding, risk triage (Router/Condition), verified LLM synthesis
 
@@ -65,16 +64,10 @@ def collect_signals(limit: Optional[int] = None) -> List[Dict[str, Any]]:
     return signals
 
 
-# --------------------------------------------------------------------------- legacy pipelines (v0 / v1.1)
+# --------------------------------------------------------------------------- original pipeline (v0)
 
 def run_legacy(version: str, raw_signals: List[Dict[str, Any]]) -> Dict[str, Any]:
-    if version == "v1.1":
-        from agents.relevance_agent_v1 import RelevanceAgentV1
-        from agents.risk_agent_v1_1 import RiskAgentV1_1
-
-        relevance, risk = RelevanceAgentV1(), RiskAgentV1_1()
-    else:
-        relevance, risk = RelevanceAgent(), RiskAgent()
+    relevance, risk = RelevanceAgent(), RiskAgent()
 
     collector = SignalCollector()
     normalized = collector.collect(raw_signals)
@@ -159,7 +152,7 @@ def print_digest(version: str, result: Dict[str, Any], elapsed: float) -> None:
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="SignalGuard signal intelligence pipeline")
-    parser.add_argument("--agent-version", choices=("v0", "v1.1", "v2"), default="v2")
+    parser.add_argument("--agent-version", choices=("v0", "v2"), default="v2")
     parser.add_argument("--limit", type=int, default=DEFAULT_SIGNAL_LIMIT, help="Live mode: signals per source.")
     parser.add_argument("--frozen", action="store_true", help="Use the frozen dataset instead of live sources.")
     parser.add_argument("--split", choices=("dev", "test"), default=None, help="Frozen mode: restrict to a split.")

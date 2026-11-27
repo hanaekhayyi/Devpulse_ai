@@ -23,12 +23,12 @@ class WebAppTests(unittest.TestCase):
         self.assertEqual(data["dataset"]["signals"], 72)
         self.assertIn("relevance", data["models"])
         self.assertGreater(data["tests"], 0)
-        self.assertEqual(len(data["evaluation"]["items"]), 6)
+        self.assertEqual(len(data["evaluation"]["items"]), 4)
 
     def test_benchmarks_have_all_versions_on_test(self):
         data = self.client.get("/api/benchmarks").json()
         versions = {s["version"] for s in data["gold"]["v4"]["test"]}
-        self.assertTrue({"v0", "v1.1", "v2"} <= versions)
+        self.assertTrue({"v0", "v2"} <= versions)
 
     def test_signals_include_gold_and_predictions(self):
         rows = self.client.get("/api/signals").json()["signals"]

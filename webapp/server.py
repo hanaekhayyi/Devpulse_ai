@@ -4,7 +4,7 @@ Run:  python -m webapp            (then open http://127.0.0.1:8765)
 
 Endpoints
     GET  /api/overview      configuration, dataset, headline metrics, evaluation status
-    GET  /api/benchmarks    v0 / v1.1 / v2 metrics (mean, std, n) per split and gold version
+    GET  /api/benchmarks    v0 / v2 metrics (mean, std, n) per split and gold version
     GET  /api/signals       frozen dataset with gold labels and latest v2 predictions
     POST /api/runs          start a pipeline run (one at a time) -> {job_id}
     GET  /api/runs/{id}     live status: stage, elapsed, digest when done
@@ -37,7 +37,7 @@ ARCHIVE = RESULTS / "v2_before_release_calibration"
 DATASET = ROOT / "data" / "benchmark"
 APP_RUNS = ROOT / "results" / "app_runs"
 
-VERSIONS = ("v0", "v1.1", "v2")
+VERSIONS = ("v0", "v2")
 STAGES = [
     ("load_signals", "raw_signals"),
     ("normalize", "signals"),
@@ -95,7 +95,7 @@ def benchmarks() -> Dict[str, Any]:
 
 def evaluation_status() -> Dict[str, Any]:
     status: Dict[str, Any] = {"target_runs": 3, "items": []}
-    for version in ("v2", "v0", "v1.1"):
+    for version in ("v2", "v0"):
         for split in ("dev", "test"):
             stem = _stem(version, split)
             done = 0

@@ -4,7 +4,7 @@
     python benchmarks/run_all.py --runs 1        # quicker
     python benchmarks/run_all.py --skip-existing # resume after an interruption
 
-Steps: v0 / v1.1 / v2 on DEV and TEST, prompt-injection benchmark, sequential
+Steps: v0 / v2 on DEV and TEST, prompt-injection benchmark, sequential
 vs parallel timing for v2, then results/benchmark/COMPARISON.md.
 Versions run in the order given (first = highest priority). On a free tier, add
 --wait-on-quota to wait for the daily token quota instead of stopping.
@@ -67,7 +67,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--runs", type=int, default=3)
     parser.add_argument("--concurrency", type=int, default=6)
-    parser.add_argument("--versions", nargs="+", default=["v0", "v1.1", "v2"])
+    parser.add_argument("--versions", nargs="+", default=["v0", "v2"])
     parser.add_argument("--splits", nargs="+", default=["dev", "test"])
     parser.add_argument("--skip-existing", action="store_true")
     parser.add_argument("--skip-injection", action="store_true")
@@ -102,14 +102,14 @@ def main() -> int:
                   "--runs", str(args.runs), "--start-run", str(done + 1), "--concurrency", str(args.concurrency)])
 
     if not args.skip_injection and not (args.skip_existing and (RESULTS / "injection_dev.json").exists()):
-        step(["benchmarks/injection_benchmark.py", "--versions", "v1.1", "v2",
+        step(["benchmarks/injection_benchmark.py", "--versions", "v0", "v2",
               "--concurrency", str(args.concurrency)])
 
     if not args.skip_timing and not (args.skip_existing and (RESULTS / "v2_dev_sequential_summary.json").exists()):
         step(["benchmarks/evaluate_agents.py", "--split", "dev", "--agent-version", "v2", "--runs", "1",
               "--concurrency", "1", "--no-cache", "--tag", "sequential"])
 
-    report_order = [v for v in ("v0", "v1", "v1.1", "v2") if v in args.versions]
+    report_order = [v for v in ("v0", "v2") if v in args.versions]
     step(["benchmarks/compare_versions.py", "--versions", *report_order])
     return 0
 

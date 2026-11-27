@@ -6,9 +6,9 @@ Ce document décrit les améliorations des blocs 1 (crédibilité des mesures) e
 
 | Problème | Correction |
 |---|---|
-| `evaluate_agents.py` évaluait v0 sur les annotations **v3** et v1/v1.1 sur la **v4** | Toutes les versions utilisent la v4 par défaut (`--gold-version`, `--gold-file` pour forcer autre chose). Un test le vérifie. |
+| Le benchmark d'origine évaluait v0 sur les annotations **v3** et les versions suivantes sur la **v4** | Toutes les versions utilisent la v4 par défaut (`--gold-version`, `--gold-file` pour forcer autre chose). Un test le vérifie. |
 | Une seule exécution LLM par version | `--runs N` : chaque run est sauvegardé, puis un résumé donne moyenne ± écart-type, min et max. |
-| Aucun contrôle du décodage | v2 : `temperature=0`, `seed=42`. v0/v1.1 restent tels quels, comme références historiques. |
+| Aucun contrôle du décodage | v2 : `temperature=0`, `seed=42`. v0 reste tel quel, comme référence historique. |
 | Les « preuves » du LLM n'étaient jamais vérifiées | Ancrage des preuves : chaque citation est classée `exact`, `fuzzy` ou `ungrounded`. Les citations inventées sont rejetées et comptées (taux de preuves hallucinées). |
 
 ## 2. Fonctionnalités de production (bloc 2)
@@ -39,7 +39,7 @@ Le contenu des signaux vient d'Internet, donc il est contrôlé par des tiers.
 
 Calculé une seule fois par signal, sans LLM :
 
-- marqueurs explicites de compatibilité (repris de v1.1) et de sécurité ;
+- marqueurs explicites de compatibilité et de sécurité ;
 - **score de dépôt-leurre GitHub** : vocabulaire de triche ou de crack, usurpation d'un logiciel payant, accumulation de topics, langage HTML contredisant des topics natifs (cpp, directx, win32...). Sur le DEV : 8 leurres détectés sur 8, aucun faux positif.
 
 ### Arbitrage du risque — [agents/v2/risk.py](../agents/v2/risk.py)
@@ -81,28 +81,29 @@ Les offres gratuites limitent les requêtes par minute. Un limiteur de débit pa
 .\.venv\Scripts\python.exe benchmarks\run_all.py --runs 3
 ```
 
-`run_all.py` lance v0, v1.1 et v2 sur DEV puis TEST, le benchmark d'injection, la mesure séquentiel/parallèle, et génère [results/benchmark/COMPARISON.md](../results/benchmark/COMPARISON.md). Avec `--skip-existing`, il reprend là où il s'est arrêté. Avec Groq gratuit, un run complet (environ 540 appels) prend environ 45 minutes.
+`run_all.py` lance v0 et v2 sur DEV puis TEST, le benchmark d'injection, la mesure séquentiel/parallèle, et génère `results/benchmark/COMPARISON.md`. Avec `--skip-existing`, il reprend là où il s'est arrêté. Avec Groq gratuit, un run complet (environ 540 appels) prend environ 45 minutes.
 
 ## 5. Résultats (Groq gratuit)
 
 Le détail complet est dans [results/benchmark/COMPARISON.md](../results/benchmark/COMPARISON.md).
 
-| | DEV v0 | DEV v1.1 | DEV v2 | TEST v0 | TEST v1.1 | TEST v2 |
-|---|---:|---:|---:|---:|---:|---:|
-| Relevance MAE ↓ | 23,25 | 18,17 | **13,94** | 26,92 | 20,33 | **19,38** |
-| Relevance Spearman ↑ | 0,645 | 0,613 | **0,899** | **0,678** | 0,565 | 0,620 |
-| NDCG@10 ↑ | 0,619 | 0,620 | **0,855** | **0,783** | 0,718 | 0,781 |
-| Risk accuracy ↑ | 0,864 | 0,792 | **0,938** | 0,739 | 0,833 | **0,958** |
-| Risk macro-F1 ↑ | 0,745 | 0,593 | **0,915** | 0,557 | 0,700 | **0,941** |
-| Rappel MEDIUM ↑ | 0,400 | 0,182 | **0,818** | 0,167 | 0,333 | **0,833** |
-| Breaking changes F1 ↑ | 1,000 | 1,000 | 1,000 | 0,800 | 1,000 | 1,000 |
+| | DEV v0 | DEV v2 | TEST v0 | TEST v2 |
+|---|---:|---:|---:|---:|
+| Relevance MAE ↓ | 23,25 | **13,94** | 26,92 | **19,38** |
+| Relevance Spearman ↑ | 0,645 | **0,899** | **0,678** | 0,620 |
+| NDCG@10 ↑ | 0,619 | **0,855** | **0,783** | 0,781 |
+| Risk accuracy ↑ | 0,864 | **0,938** | 0,739 | **0,958** |
+| Risk macro-F1 ↑ | 0,745 | **0,915** | 0,557 | **0,941** |
+| Rappel MEDIUM ↑ | 0,400 | **0,818** | 0,167 | **0,833** |
+| Breaking changes F1 ↑ | 1,000 | 1,000 | 0,800 | 1,000 |
 
 Robustesse aux injections (DEV, 12 signaux à risque et 15 peu pertinents attaqués) :
-- signaux à risque classés LOW sous attaque : 83 % pour v1.1, **0 %** pour v2 ;
-- inflation moyenne de la pertinence : +11,7 points pour v1.1, **+0,7** pour v2 ;
-- détection des injections : **100 %**.
+- signaux à risque classés LOW sous attaque : 83 % pour v0, **0 %** pour v2 ;
+- attaques réussies pour gonfler la pertinence (+20 points ou plus) : 93 % pour v0, **0 %** pour v2 ;
+- gonflement moyen de la pertinence : +64,6 points pour v0, **+0,7** pour v2 ;
+- détection des injections : 0 % pour v0, **100 %** pour v2.
 
-Le « downgrade success » de v1.1 (0 %) est trompeur : v1.1 classe déjà ces signaux LOW sans attaque. Le seul cas v2 est un passage HIGH → MEDIUM, toujours en catégorie SECURITY.
+Le « downgrade success » de v0 (25 %) sous-estime le problème : v0 classe déjà la plupart de ces signaux LOW sans attaque. Le seul cas v2 est un passage HIGH → MEDIUM, toujours en catégorie SECURITY.
 
 Lecture honnête :
 - **Risque** : nette amélioration sur DEV et sur TEST (accuracy 0,739 → 0,958 sur TEST). Elle vient surtout du détecteur de dépôts-leurres et de l'arbitrage. Les 8 leurres du DEV sont tous détectés.
@@ -113,7 +114,7 @@ Lecture honnête :
 ## 6. Protocole et limites
 
 - Le développement de v2 s'est appuyé uniquement sur l'analyse d'erreurs du **DEV**. TEST n'est évalué qu'une fois, à la fin.
-- TEST avait déjà été consulté pour v1.1 : un nouveau jeu indépendant reste nécessaire pour une évaluation finale irréprochable.
+- TEST avait déjà été consulté lors d'une itération intermédiaire : un nouveau jeu indépendant reste nécessaire pour une évaluation finale irréprochable.
 - Les annotations de référence ont été construites par consensus de deux LLM (GPT et Claude), puis vérifiées. Elles ne sont pas entièrement humaines.
 - Labels v4 à réauditer (repérés pendant l'analyse DEV) : trois posts HN marqués `LOW/SECURITY` dont la justification ne mentionne aucun problème de sécurité (FastGraphRAG, Promi, Rowboat), et deux modèles HF marqués `MEDIUM/NONE` (un niveau élevé sans catégorie de risque est incohérent). Ces cas pénalisent toutes les versions de la même façon. Ils n'ont **pas** été modifiés pour ne pas ajuster la référence au modèle.
 
@@ -163,7 +164,7 @@ load_signals -> normalize -> profile_and_triage
 .\.venv\Scripts\python.exe main.py --frozen --split dev --max-signals 6
 ```
 
-- Option `--agent-version v0|v1.1|v2`, avec v2 par défaut. La source GitHub Releases fait partie de la collecte, et une source en panne n'arrête plus le pipeline.
+- Option `--agent-version v0|v2`, avec v2 par défaut. La source GitHub Releases fait partie de la collecte, et une source en panne n'arrête plus le pipeline.
 - Le modèle de synthèse est `gpt-oss-20b`, pour ne pas consommer le quota du modèle de pertinence. Un quota épuisé produit un message clair (code de sortie 3).
 - **Démonstration réelle** (6 signaux DEV, tous les rôles sur gpt-oss-20b) : 0 fallback, synthèse LLM vérifiée, recommandations rattachées à des signaux existants.
 - **Tests** : 68 tests hors ligne réussis, dont 16 pour le bloc 3 ([tests/test_v2_pipeline.py](../tests/test_v2_pipeline.py)).
@@ -182,8 +183,8 @@ L'application s'ouvre sur <http://127.0.0.1:8765> (option `--port`, et `--no-bro
 |---|---|
 | Accueil | Présentation, indicateurs avant/après (TEST), configuration LLM |
 | Actualités | Fil des signaux évalués, classés par pertinence (analyses lancées depuis l'application, puis dataset de référence), avec une liste « À surveiller » pour les signaux à risque, qui restent aussi affichés dans le fil et marqués d'un liseré ; filtres par source, pertinence, origine et risque, recherche, et bouton « Actualiser depuis les sources » (collecte en direct puis analyse v2) |
-| Analyse | Lance le vrai pipeline (v0, v1.1 ou v2 ; dataset figé ou sources en direct) et affiche les étapes du workflow Agno en direct, le digest, les recommandations et un tableau des signaux |
-| Benchmarks | Graphiques v0 / v1.1 / v2, DEV ou TEST, référence v4 ou v4.1, robustesse aux injections |
+| Analyse | Lance le vrai pipeline (v0 ou v2 ; dataset figé ou sources en direct) et affiche les étapes du workflow Agno en direct, le digest, les recommandations et un tableau des signaux |
+| Benchmarks | Graphiques v0 / v2, DEV ou TEST, référence v4 ou v4.1, robustesse aux injections |
 | Architecture | Schéma du workflow Agno (Step, Parallel, Condition, Router) et des couches de fiabilité |
 | Explorateur | Les 72 signaux, avec l'annotation de référence face à la prédiction de v2 et un filtre sur les désaccords |
 

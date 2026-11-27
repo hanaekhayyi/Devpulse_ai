@@ -62,7 +62,7 @@ MODEL_RELEVANCE = os.getenv("MODEL_RELEVANCE") or LLM_MODEL
 MODEL_RISK = os.getenv("MODEL_RISK") or LLM_MODEL
 MODEL_SYNTHESIS = os.getenv("MODEL_SYNTHESIS") or LLM_MODEL
 
-# Backward-compatible names used by the v0 / v1 / v1.1 agents.
+# Backward-compatible names used by the original v0 agents.
 OPENROUTER_API_KEY = LLM_API_KEY
 OPENROUTER_BASE_URL = LLM_BASE_URL
 

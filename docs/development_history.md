@@ -175,14 +175,14 @@ Résultats DEV :
 | Accuracy risque | 0,854 |
 | Breaking changes F1 | 1,000 |
 
-Résultat : [baseline_v0_v4_recomputed_dev.json](../results/baseline_v0_v4_recomputed_dev.json).
+Résultat : `baseline_v0_v4_recomputed_dev.json`.
 
 ## 12. SignalGuard v1
 
 Les agents expérimentaux sont :
 
-- [relevance_agent_v1.py](../agents/relevance_agent_v1.py)
-- [risk_agent_v1.py](../agents/risk_agent_v1.py)
+- `relevance_agent_v1.py`
+- `risk_agent_v1.py`
 
 ### RelevanceAgentV1
 
@@ -216,7 +216,7 @@ La MAE s'est améliorée, mais les deux breaking changes positifs du DEV n'ont p
 
 ## 13. SignalGuard v1.1
 
-La version v1.1 est implémentée dans [risk_agent_v1_1.py](../agents/risk_agent_v1_1.py).
+La version v1.1 est implémentée dans `risk_agent_v1_1.py`.
 
 Elle conserve l'analyse du LLM puis applique une validation déterministe :
 
@@ -253,14 +253,14 @@ Elle conserve l'analyse du LLM puis applique une validation déterministe :
 
 Résultats :
 
-- [baseline_v1_1_dev_final.json](../results/baseline_v1_1_dev_final.json)
-- [baseline_v1_1_test_final.json](../results/baseline_v1_1_test_final.json)
+- `baseline_v1_1_dev_final.json`
+- `baseline_v1_1_test_final.json`
 
 Les résultats montrent une détection robuste des breaking changes. Le rubric de pertinence reste néanmoins variable entre les exécutions LLM.
 
 ## 14. Post-validation offline
 
-[revalidate_saved_risk.py](../scripts/revalidate_saved_risk.py) permet d'appliquer les règles déterministes à des prédictions sauvegardées sans nouvel appel LLM.
+`revalidate_saved_risk.py` permet d'appliquer les règles déterministes à des prédictions sauvegardées sans nouvel appel LLM.
 
 Cette procédure sert à isoler l'effet de la validation et ne constitue pas une nouvelle inférence.
 
